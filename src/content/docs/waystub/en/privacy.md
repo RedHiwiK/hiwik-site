@@ -23,8 +23,8 @@ We **do not keep** your journeys, tickets or photos on our own servers.
 
 How a ticket is processed depends on where it comes from:
 
-- **On your device**: Wallet boarding passes, boarding pass barcodes, OFD e-invoices, PDFs with a text layer, and ticket texts or emails are parsed on your device and never sent to a server.
-- **Sent to our recognition service**: booking screenshots, photos of paper tickets taken with the camera, and PDFs that can only be read as images are sent over an encrypted connection to our recognition service. Volcano Engine's (ByteDance) Doubao vision model extracts the train or flight number, stations, date, seat and fare, which are returned to the app for you to check. The service has no database and **does not keep the image or the result**; the returned fields never include passenger names, ID numbers or order numbers.
+- **On your device**: Wallet boarding passes, boarding pass barcodes, OFD e-invoices and PDFs with a text layer are parsed on your device and never sent to a server.
+- **Sent to our recognition service**: booking screenshots, photos of paper tickets taken with the camera, PDFs that can only be read as images, and ticket text messages you paste or text and email files you import are sent over an encrypted connection to our recognition service. Volcano Engine's (ByteDance) Doubao model extracts the train or flight number, stations, date, seat and fare, which are returned to the app for you to check. The service has no database and **does not keep the image, the text or the result**; the returned fields never include passenger names, ID numbers or order numbers.
 - To prevent abuse, the service limits how many recognitions each device can make per day. For this the app sends a random device identifier with each request. It is not linked to your identity, and the counts live only in server memory and reset daily.
 - The recognition service runs on Alibaba Cloud servers in mainland China.
 
@@ -44,7 +44,7 @@ Waystub Pro is bought through Apple's In-App Purchase. Apple handles payment, an
 - **No user tracking**: no third-party analytics or tracking tools, only the anonymous usage statistics described above
 - **No data sales**: we will never sell your data to any third party
 
-The only third parties involved are those named above: Apple (iCloud sync, In-App Purchase), Volcano Engine (screenshot recognition) and Alibaba Cloud (server hosting).
+The only third parties involved are those named above: Apple (iCloud sync, In-App Purchase), Volcano Engine (ticket recognition) and Alibaba Cloud (server hosting).
 
 ## Export and deletion
 
