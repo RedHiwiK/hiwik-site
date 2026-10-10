@@ -1,0 +1,87 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<button type="button" class="theme-toggle" aria-label={label} title={label} data-theme-toggle>
+  <Icon name="sun" class="ti sun" />
+  <Icon name="moon" class="ti moon" />
+</button>
+
+<script>
+  // 手动选择存在 localStorage，首屏前由 Base 的内联脚本应用；未选择时跟随系统
+  const dark = matchMedia('(prefers-color-scheme: dark)');
+  const effective = () => document.documentElement.dataset.theme ?? (dark.matches ? 'dark' : 'light');
+  document.querySelectorAll('[data-theme-toggle]').forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const next = effective() === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try {
+        localStorage.setItem('theme', next);
+      } catch {}
+    }),
+  );
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    box-shadow: inset 0 0 0 1px var(--rule-strong);
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+  }
+
+  .theme-toggle:hover {
+    color: var(--ink);
+    background: var(--paper-sunken);
+  }
+
+  .theme-toggle :global(.ti) {
+    grid-area: 1 / 1;
+    width: 1rem;
+    height: 1rem;
+    transition: opacity 0.3s var(--ease-out), rotate 0.4s var(--ease-out);
+  }
+
+  /* 显示"点了会切到"的那个图标：浅色时显示月亮，深色时显示太阳 */
+  .theme-toggle :global(.sun) {
+    opacity: 0;
+    rotate: -60deg;
+  }
+
+  :global(:root[data-theme='dark']) .theme-toggle :global(.sun) {
+    opacity: 1;
+    rotate: 0deg;
+  }
+
+  :global(:root[data-theme='dark']) .theme-toggle :global(.moon) {
+    opacity: 0;
+    rotate: 60deg;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .theme-toggle :global(.sun) {
+      opacity: 1;
+      rotate: 0deg;
+    }
+
+    :global(:root:not([data-theme='light'])) .theme-toggle :global(.moon) {
+      opacity: 0;
+      rotate: 60deg;
+    }
+  }
+</style>

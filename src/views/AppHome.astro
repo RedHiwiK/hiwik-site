@@ -1,0 +1,541 @@
+---
+import { Image } from 'astro:assets';
+import AppLayout from '../layouts/AppLayout.astro';
+import Icon from '../components/Icon.astro';
+import { t, pick, href, type Lang } from '../i18n';
+import type { AppConfig } from '../data/types';
+import { apps, appStoreUrl } from '../data/apps';
+import { appSections } from '../lib/sections';
+
+interface Props {
+  lang: Lang;
+  app: AppConfig;
+}
+
+const { lang, app } = Astro.props;
+const s = t(lang);
+const name = pick(app.name, lang);
+const sections = await appSections(app, lang);
+const secondary = sections.find((x) => x.key === 'guide') ?? sections.find((x) => x.key === 'support');
+const others = apps.filter((a) => a.slug !== app.slug);
+
+// 功能卡片排成"2 宽 + 3 窄"交替的行，保证每行都铺满
+const spans: number[] = [];
+let rest = app.features.length;
+let wide = true;
+while (rest > 0) {
+  const n = rest === 4 || rest === 2 || (wide && rest !== 3) ? 2 : 3;
+  for (let i = 0; i < n; i++) spans.push(6 / n);
+  rest -= n;
+  wide = !wide;
+}
+---
+
+<AppLayout lang={lang} app={app} current="home">
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="icon-wrap" data-enter>
+        <Image src={app.icon} alt="" width={256} height={256} class="icon-glow" loading="eager" aria-hidden="true" />
+        <Image src={app.icon} alt={name} width={256} height={256} class="hero-icon" loading="eager" />
+      </div>
+      <p class="app-name" data-enter style="--i:1">{name}</p>
+      <h1 data-enter style="--i:2">{pick(app.headline, lang)}</h1>
+      <p class="lead" data-enter style="--i:3">{pick(app.summary, lang)}</p>
+      <div class="cta" data-enter style="--i:4">
+        {
+          app.comingSoon ? (
+            <span class="btn btn-primary" aria-disabled="true">{s.comingSoon}</span>
+          ) : (
+            <a class="btn btn-primary" href={appStoreUrl(app)} target="_blank" rel="noopener">
+              {s.download}
+              <Icon name="arrow-up-right" class="btn-icon" />
+            </a>
+          )
+        }
+        {secondary && <a class="btn btn-ghost" href={secondary.url}>{secondary.label}</a>}
+      </div>
+      <p class="meta" data-enter style="--i:5">
+        <Icon name="smartphone" class="meta-icon" />
+        {s.forIphone}
+      </p>
+    </div>
+  </section>
+
+  {
+    app.features.length > 0 && (
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="eyebrow">{s.features}</span>
+            <h2>{pick(app.tagline, lang)}</h2>
+          </div>
+          <ul class="bento">
+            {app.features.map((f, i) => (
+              <li class:list={['tile', { big: spans[i] === 3 }]} style={`--span:${spans[i]};--i:${i % 3}`} data-reveal>
+                <Icon name={f.icon} class="tile-icon" />
+                <h3>{pick(f.title, lang)}</h3>
+                <p>{pick(f.body, lang)}</p>
+                {spans[i] === 3 && <Icon name={f.icon} class="tile-watermark" />}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    app.promises && app.promises.length > 0 && (
+      <section class="wrap">
+        <div class="promises">
+          <div class="promises-glow" aria-hidden="true" />
+          <span class="eyebrow">{s.promises}</span>
+          <div class="promise-grid">
+            {app.promises.map((p, i) => (
+              <div class="promise" data-reveal style={`--i:${i}`}>
+                <Icon name={p.icon} class="promise-icon" />
+                <h3>{pick(p.title, lang)}</h3>
+                <p>{pick(p.body, lang)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>{s.resources}</h2>
+        <p>{s.resourcesLead}</p>
+      </div>
+      <ul class="resources">
+        {
+          sections.map((r, i) => (
+            <li data-reveal style={`--i:${i % 3}`}>
+              <a href={r.url} class="res">
+                <Icon name={r.icon} class="res-icon" />
+                <span class="res-text">
+                  <strong>{r.label}</strong>
+                  <small>{r.desc}</small>
+                </span>
+                <Icon name="arrow-right" class="res-arrow" />
+              </a>
+            </li>
+          ))
+        }
+        <li data-reveal style={`--i:${sections.length % 3}`}>
+          <a href={`mailto:${app.contactEmail}`} class="res">
+            <Icon name="mail" class="res-icon" />
+            <span class="res-text">
+              <strong>{s.contact}</strong>
+              <small>{app.contactEmail}</small>
+            </span>
+            <Icon name="arrow-up-right" class="res-arrow" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap others">
+    <h2>{s.moreApps}</h2>
+    <div class="other-grid">
+      {
+        others.map((o) => (
+          <a class="other" href={href(lang, `/${o.slug}`)} data-app={o.slug}>
+            <Image src={o.icon} alt="" width={96} height={96} class="other-icon" />
+            <span>
+              <strong>{pick(o.name, lang)}</strong>
+              <small>{pick(o.tagline, lang)}</small>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</AppLayout>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    overflow: clip;
+    padding-block: clamp(3.5rem, 9vw, 6.5rem) clamp(3rem, 7vw, 5rem);
+    text-align: center;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(55% 60% at 50% 0%, color-mix(in oklch, var(--accent) 16%, transparent), transparent 72%),
+      radial-gradient(30% 40% at 12% 35%, color-mix(in oklch, var(--accent) 7%, transparent), transparent 70%),
+      radial-gradient(30% 40% at 88% 30%, color-mix(in oklch, var(--accent) 7%, transparent), transparent 70%);
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--dot) 1px, transparent 1.2px);
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, black, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, black, transparent 75%);
+  }
+
+  .hero-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .icon-wrap {
+    position: relative;
+    width: clamp(6.5rem, 14vw, 8.5rem);
+    aspect-ratio: 1;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-icon,
+  .icon-glow {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 22.5%;
+  }
+
+  .hero-icon {
+    box-shadow:
+      0 0 0 0.5px var(--rule-strong),
+      var(--icon-shadow);
+  }
+
+  .icon-glow {
+    filter: blur(28px) saturate(1.4);
+    opacity: 0.55;
+    translate: 0 14%;
+    scale: 0.92;
+  }
+
+  .app-name {
+    font-size: 0.95rem;
+    font-weight: 650;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+  }
+
+  h1 {
+    margin-top: 0.6rem;
+    max-width: 15em;
+    font-size: clamp(2.5rem, 6.4vw, 4.75rem);
+    font-weight: 750;
+    letter-spacing: -0.04em;
+    line-height: 1.06;
+    /* 中文标题只在标点处换行，避免把词拆开 */
+    word-break: keep-all;
+  }
+
+  .lead {
+    margin-top: 1.4rem;
+    max-width: 36rem;
+    font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2.25rem;
+  }
+
+  :global(.btn-icon) {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+    font-size: 0.8125rem;
+    color: var(--ink-faint);
+  }
+
+  :global(.meta-icon) {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  /* ---------- Features bento ---------- */
+  .bento {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .tile {
+    position: relative;
+    overflow: hidden;
+    grid-column: span var(--span);
+    padding: clamp(1.4rem, 2.6vw, 1.9rem);
+    border-radius: calc(var(--radius) + 6px);
+    background: var(--paper-raised);
+    box-shadow:
+      0 0 0 1px var(--rule),
+      var(--shadow-sm);
+  }
+
+  .tile.big {
+    min-height: 15rem;
+    background:
+      radial-gradient(90% 120% at 100% 100%, var(--accent-soft), transparent 60%),
+      var(--paper-raised);
+  }
+
+  :global(.tile-icon) {
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.6rem;
+    border-radius: 0.85rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .tile h3 {
+    margin-top: 1.1rem;
+    font-size: 1.15rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+  }
+
+  .tile.big h3 {
+    margin-top: 1.5rem;
+    font-size: clamp(1.25rem, 2vw, 1.45rem);
+  }
+
+  .tile p {
+    position: relative;
+    margin-top: 0.5rem;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 30rem;
+  }
+
+  :global(.tile-watermark) {
+    position: absolute;
+    right: -1.5rem;
+    bottom: -1.75rem;
+    width: 10rem;
+    height: 10rem;
+    color: var(--accent);
+    opacity: 0.09;
+    rotate: -12deg;
+  }
+
+  @media (max-width: 860px) {
+    .bento {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .tile,
+    .tile.big {
+      grid-column: span 1;
+      min-height: 0;
+    }
+
+    .tile.big:first-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .bento {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---------- Promises ---------- */
+  .promises {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    border-radius: calc(var(--radius) + 12px);
+    background: var(--night);
+    color: var(--night-ink);
+  }
+
+  .promises-glow {
+    position: absolute;
+    inset: -40% -10% auto auto;
+    width: 60%;
+    aspect-ratio: 1;
+    background: radial-gradient(closest-side, color-mix(in oklch, var(--accent) 45%, transparent), transparent);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .promises .eyebrow {
+    position: relative;
+    color: color-mix(in oklch, var(--accent) 70%, var(--night-ink));
+  }
+
+  .promise-grid {
+    position: relative;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: 2rem clamp(1.5rem, 4vw, 3rem);
+  }
+
+  :global(.promise-icon) {
+    width: 1.6rem;
+    height: 1.6rem;
+    color: color-mix(in oklch, var(--accent) 70%, var(--night-ink));
+  }
+
+  .promise h3 {
+    margin-top: 0.9rem;
+    font-size: 1.1rem;
+    font-weight: 650;
+  }
+
+  .promise p {
+    margin-top: 0.4rem;
+    color: var(--night-soft);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- Resources ---------- */
+  .resources {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    gap: 0.75rem;
+  }
+
+  .res {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+    padding: 1.1rem 1.2rem;
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+    box-shadow: 0 0 0 1px var(--rule);
+    transition: box-shadow 0.25s, transform 0.35s var(--ease-out);
+  }
+
+  .res:hover {
+    box-shadow:
+      0 0 0 1px var(--accent-line),
+      var(--shadow-sm);
+    transform: translateY(-2px);
+  }
+
+  :global(.res-icon) {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.55rem;
+    border-radius: 0.75rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .res-text {
+    display: grid;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .res-text strong {
+    font-weight: 650;
+  }
+
+  .res-text small {
+    font-size: 0.8125rem;
+    color: var(--ink-faint);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  :global(.res-arrow) {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--ink-faint);
+    transition: translate 0.3s var(--ease-out), color 0.2s;
+  }
+
+  .res:hover :global(.res-arrow) {
+    color: var(--accent);
+    translate: 3px 0;
+  }
+
+  /* ---------- Other apps ---------- */
+  .others h2 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+  }
+
+  .other-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 0.75rem;
+  }
+
+  .other {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+    padding: 0.9rem 1rem;
+    border-radius: var(--radius);
+    transition: background-color 0.2s;
+  }
+
+  .other:hover {
+    background: var(--accent-soft);
+  }
+
+  .other-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 22.5%;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 0.5px var(--rule-strong);
+  }
+
+  .other span {
+    display: grid;
+    min-width: 0;
+  }
+
+  .other strong {
+    font-size: 0.95rem;
+  }
+
+  .other small {
+    color: var(--ink-faint);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

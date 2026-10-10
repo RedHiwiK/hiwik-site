@@ -1,0 +1,294 @@
+---
+import Base from './Base.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import { Image } from 'astro:assets';
+import { t, pick, href, altHref, type Lang } from '../i18n';
+import type { AppConfig } from '../data/types';
+import { appSections, type SectionKey } from '../lib/sections';
+
+interface Props {
+  lang: Lang;
+  app: AppConfig;
+  /** 页面标题；App 首页不传 */
+  title?: string;
+  description?: string;
+  /** 当前所在栏目，用于导航高亮 */
+  current?: 'home' | SectionKey;
+}
+
+const { lang, app, title, description, current } = Astro.props;
+const s = t(lang);
+const name = pick(app.name, lang);
+const home = href(lang, `/${app.slug}`);
+const sections = await appSections(app, lang);
+const nav = [{ key: 'home', label: s.nav.home, url: home }, ...sections];
+const pick3 = (keys: SectionKey[]) => sections.filter((x) => keys.includes(x.key));
+const footCols = [
+  { title: s.footProduct, links: [{ label: s.nav.home, url: home }, ...pick3(['guide', 'changelog'])] },
+  { title: s.footHelp, links: [...pick3(['support']), { label: s.contact, url: `mailto:${app.contactEmail}` }] },
+  { title: s.footLegal, links: pick3(['privacy', 'terms']) },
+].filter((c) => c.links.length > 0);
+const pageTitle = title ? `${title} · ${name}` : `${name} · ${pick(app.headline, lang)}`;
+---
+
+<Base lang={lang} title={pageTitle} description={description ?? pick(app.tagline, lang)} app={app.slug} icon={app.icon}>
+  <header class="app-header">
+    <div class="wrap bar">
+      <a class="app-id" href={home}>
+        <Image src={app.icon} alt="" width={64} height={64} class="mini-icon" />
+        <span>{name}</span>
+      </a>
+      <nav aria-label={name}>
+        {
+          nav.map((n) => (
+            <a href={n.url} aria-current={current === n.key ? 'page' : undefined}>
+              {n.label}
+            </a>
+          ))
+        }
+      </nav>
+      <div class="tools">
+        <a class="author" href={s.authorUrl} target="_blank" rel="noopener">{s.aboutAuthor}</a>
+        <ThemeToggle label={s.themeLabel} />
+        <a class="lang" href={altHref(lang, Astro.url.pathname)} aria-label={s.langSwitchLabel} lang={lang === 'zh' ? 'en' : 'zh-CN'}>{s.langSwitch}</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="app-footer">
+    <div class="wrap foot">
+      <div class="foot-id">
+        <Image src={app.icon} alt="" width={96} height={96} class="foot-icon" />
+        <div>
+          <strong>{name}</strong>
+          <p>{pick(app.tagline, lang)}</p>
+        </div>
+      </div>
+      {
+        footCols.map((c) => (
+          <div class="foot-col">
+            <h2>{c.title}</h2>
+            <ul>
+              {c.links.map((l) => (
+                <li>
+                  <a href={l.url}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+      <div class="foot-base">
+        <span>© 2026 KunKunRed</span>
+        <a href={href(lang, '/')}>{s.moreApps} →</a>
+      </div>
+    </div>
+  </footer>
+</Base>
+
+<style>
+  .app-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--header-bg);
+    backdrop-filter: saturate(1.8) blur(20px);
+    -webkit-backdrop-filter: saturate(1.8) blur(20px);
+    box-shadow: 0 1px 0 var(--rule);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: 3.5rem;
+  }
+
+  .app-id {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+  }
+
+  .mini-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 22.5%;
+    box-shadow: 0 0 0 0.5px var(--rule-strong);
+  }
+
+  nav {
+    display: flex;
+    gap: 0.15rem;
+    margin-left: auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+    min-width: 0;
+  }
+
+  nav a,
+  .author,
+  .lang {
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    transition: color 0.2s, background-color 0.2s;
+  }
+
+  nav a:hover,
+  .author:hover,
+  .lang:hover {
+    color: var(--ink);
+    background: var(--paper-sunken);
+  }
+
+  nav a[aria-current='page'] {
+    color: var(--ink);
+    font-weight: 600;
+    background: var(--accent-soft);
+  }
+
+  .tools {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  .lang {
+    flex-shrink: 0;
+    box-shadow: inset 0 0 0 1px var(--rule-strong);
+    font-weight: 600;
+    font-size: 0.78rem;
+  }
+
+  @media (max-width: 760px) {
+    /* 第一行固定"App 名 + 工具"，名字过长时截断；导航单独占第二行 */
+    .bar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      height: auto;
+      padding-top: 0.6rem;
+      gap: 0.4rem 0.75rem;
+    }
+
+    .app-id {
+      flex-shrink: 1;
+      min-width: 0;
+    }
+
+    .app-id span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .tools {
+      gap: 0.25rem;
+    }
+
+    .author {
+      padding-inline: 0.5rem;
+    }
+
+    nav {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      margin: 0 calc(-1 * var(--gutter));
+      padding: 0 calc(var(--gutter) - 0.7rem) 0.55rem;
+      width: calc(100% + 2 * var(--gutter));
+    }
+  }
+
+  .app-footer {
+    margin-top: clamp(4rem, 9vw, 6rem);
+    background: var(--paper-sunken);
+    box-shadow: 0 -1px 0 var(--rule);
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+  }
+
+  .foot {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    padding-block: 3rem 2rem;
+  }
+
+  .foot-id {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+    max-width: 22rem;
+  }
+
+  .foot-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 22.5%;
+    box-shadow: 0 0 0 0.5px var(--rule-strong);
+  }
+
+  .foot-id strong {
+    color: var(--ink);
+    font-size: 0.95rem;
+  }
+
+  .foot-id p {
+    margin-top: 0.15rem;
+    line-height: 1.55;
+  }
+
+  .foot-col h2 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.7rem;
+  }
+
+  .foot-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .foot-col a:hover,
+  .foot-base a:hover {
+    color: var(--accent);
+  }
+
+  .foot-base {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-faint);
+    font-size: 0.8125rem;
+  }
+
+  @media (max-width: 760px) {
+    .foot {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .foot-id {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

@@ -1,0 +1,478 @@
+/* ---------- Design tokens ---------- */
+:root {
+  color-scheme: light;
+
+  --paper: oklch(98.6% 0.004 90);
+  --paper-raised: oklch(100% 0 0);
+  --paper-sunken: oklch(96.2% 0.006 90);
+  --ink: oklch(21% 0.01 270);
+  --ink-soft: oklch(42% 0.012 270);
+  --ink-faint: oklch(58% 0.01 270);
+  --rule: oklch(91% 0.006 270);
+  --rule-strong: oklch(84% 0.008 270);
+  --header-bg: oklch(98.6% 0.004 90 / 0.78);
+  --dot: oklch(21% 0.01 270 / 0.13);
+
+  /* 深色反差面板，深浅模式下都保持深底 */
+  --night: oklch(21% 0.014 270);
+  --night-ink: oklch(96% 0.004 270);
+  --night-soft: oklch(78% 0.01 270);
+
+  --brand: oklch(56% 0.19 30);
+
+  /* 各 App 的主题色，与 App 内 AccentColor 对齐 */
+  --app-vitae: oklch(58% 0.18 258);
+  --app-cutepet: oklch(66% 0.14 12);
+  --app-moonlog: oklch(70% 0.15 68);
+  --app-waystub: oklch(45% 0.11 255);
+
+  --accent: var(--brand);
+  --soft-pct: 9%;
+  --accent-soft: color-mix(in oklch, var(--accent) var(--soft-pct), transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 28%, transparent);
+  --on-accent: oklch(99% 0 0);
+
+  --shadow-sm: 0 1px 2px oklch(25% 0.02 270 / 0.06), 0 2px 8px -2px oklch(25% 0.02 270 / 0.08);
+  --shadow-lg: 0 40px 80px -40px oklch(25% 0.03 270 / 0.4), 0 16px 32px -20px oklch(25% 0.03 270 / 0.22);
+  --icon-shadow: 0 1px 1px oklch(20% 0.02 270 / 0.08), 0 10px 24px -8px oklch(20% 0.02 270 / 0.28);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --measure: 42rem;
+  --wide: 72rem;
+  --gutter: clamp(1rem, 5vw, 2rem);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 深色：跟随系统，页头按钮可手动覆盖（<html data-theme>） */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --paper: oklch(16.5% 0.006 270);
+    --paper-raised: oklch(20.5% 0.008 270);
+    --paper-sunken: oklch(14% 0.006 270);
+    --ink: oklch(95% 0.004 270);
+    --ink-soft: oklch(77% 0.008 270);
+    --ink-faint: oklch(60% 0.01 270);
+    --rule: oklch(27% 0.008 270);
+    --rule-strong: oklch(35% 0.01 270);
+    --header-bg: oklch(16.5% 0.006 270 / 0.75);
+    --dot: oklch(95% 0.004 270 / 0.1);
+    --night: oklch(23% 0.012 270);
+    --brand: oklch(68% 0.17 32);
+    --app-vitae: oklch(70% 0.15 256);
+    --app-cutepet: oklch(76% 0.12 12);
+    --app-moonlog: oklch(80% 0.14 72);
+    --app-waystub: oklch(76% 0.09 252);
+    --soft-pct: 14%;
+    --on-accent: oklch(16% 0.01 270);
+    --shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.4);
+    --shadow-lg: 0 40px 80px -40px oklch(0% 0 0 / 0.8), 0 16px 32px -20px oklch(0% 0 0 / 0.6);
+    --icon-shadow: 0 10px 24px -8px oklch(0% 0 0 / 0.6);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: oklch(16.5% 0.006 270);
+  --paper-raised: oklch(20.5% 0.008 270);
+  --paper-sunken: oklch(14% 0.006 270);
+  --ink: oklch(95% 0.004 270);
+  --ink-soft: oklch(77% 0.008 270);
+  --ink-faint: oklch(60% 0.01 270);
+  --rule: oklch(27% 0.008 270);
+  --rule-strong: oklch(35% 0.01 270);
+  --header-bg: oklch(16.5% 0.006 270 / 0.75);
+  --dot: oklch(95% 0.004 270 / 0.1);
+  --night: oklch(23% 0.012 270);
+  --brand: oklch(68% 0.17 32);
+  --app-vitae: oklch(70% 0.15 256);
+  --app-cutepet: oklch(76% 0.12 12);
+  --app-moonlog: oklch(80% 0.14 72);
+  --app-waystub: oklch(76% 0.09 252);
+  --soft-pct: 14%;
+  --on-accent: oklch(16% 0.01 270);
+  --shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.4);
+  --shadow-lg: 0 40px 80px -40px oklch(0% 0 0 / 0.8), 0 16px 32px -20px oklch(0% 0 0 / 0.6);
+  --icon-shadow: 0 10px 24px -8px oklch(0% 0 0 / 0.6);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+[data-app='vitae'] { --accent: var(--app-vitae); }
+[data-app='cutepet'] { --accent: var(--app-cutepet); }
+[data-app='moonlog'] { --accent: var(--app-moonlog); }
+[data-app='waystub'] { --accent: var(--app-waystub); }
+
+/* 派生色要在 data-app 元素上重新计算，否则继承的是 :root 上按品牌色算好的值 */
+[data-app] {
+  --accent-soft: color-mix(in oklch, var(--accent) var(--soft-pct), transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 28%, transparent);
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-autospace: normal;
+}
+
+main {
+  flex: 1;
+}
+
+::selection {
+  background: var(--accent-line);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  text-wrap: balance;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--gutter), var(--wide));
+  margin-inline: auto;
+}
+
+.narrow {
+  width: min(100% - 2 * var(--gutter), var(--measure));
+  margin-inline: auto;
+}
+
+.eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.section {
+  padding-block: clamp(3.5rem, 9vw, 6.5rem);
+}
+
+.section-head {
+  display: grid;
+  gap: 0.6rem;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.section-head h2 {
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-head p {
+  color: var(--ink-soft);
+  max-width: 36rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  height: 3rem;
+  padding-inline: 1.35rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: transform 0.25s var(--ease-out), background-color 0.2s, box-shadow 0.25s;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: color-mix(in oklch, var(--ink) 86%, var(--accent));
+}
+
+.btn-ghost {
+  border: 1px solid var(--rule-strong);
+  color: var(--ink);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn[aria-disabled='true'] {
+  pointer-events: none;
+  background: var(--paper-sunken);
+  color: var(--ink-soft);
+  box-shadow: none;
+}
+
+/* ---------- Prose（Markdown 文档） ---------- */
+.prose {
+  color: var(--ink);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+.prose > * + * {
+  margin-top: 1.1em;
+}
+
+.prose h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 2.6em;
+  padding-top: 0.2em;
+}
+
+.prose h3 {
+  font-size: 1.12rem;
+  font-weight: 650;
+  margin-top: 2em;
+}
+
+.prose h2 + *,
+.prose h3 + * {
+  margin-top: 0.6em;
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-line);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+.prose a:hover {
+  text-decoration-color: currentColor;
+}
+
+.prose strong {
+  font-weight: 650;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.3em;
+}
+
+.prose li + li {
+  margin-top: 0.4em;
+}
+
+.prose li::marker {
+  color: var(--ink-faint);
+}
+
+.prose blockquote {
+  margin-inline: 0;
+  padding: 0.9rem 1.15rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--ink-soft);
+  font-size: 0.97em;
+}
+
+.prose blockquote > * + * {
+  margin-top: 0.5em;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 0.12em 0.4em;
+  border-radius: 6px;
+  background: var(--paper-sunken);
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin-block: 2.5em;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94em;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+.prose th {
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.prose img,
+.prose video {
+  border-radius: var(--radius);
+  border: 1px solid var(--rule);
+  background: var(--paper-sunken);
+}
+
+/* 竖版手机截图 / 录屏：限制宽度并居中 */
+.prose p > img:only-child,
+.prose video {
+  max-width: min(100%, 340px);
+  margin-inline: auto;
+}
+
+/* 多张截图并排：<div class="shots">…</div> */
+.prose .shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.9rem;
+  margin-block: 1.6em;
+}
+
+.prose .shots img {
+  width: 100%;
+}
+
+.prose figure {
+  margin-inline: 0;
+}
+
+.prose figcaption {
+  margin-top: 0.6rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+}
+
+/* 更新日志：每个版本一个 h2，左侧时间线 */
+.prose.changelog h2 {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.prose.changelog h2::before {
+  content: '';
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  translate: 0 -0.15em;
+}
+
+.prose.changelog h2 em {
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-faint);
+  letter-spacing: 0;
+}
+
+/* ---------- Reveal ---------- */
+/* 首屏用纯 CSS 入场，不依赖 JS；首屏以下用 data-reveal + IntersectionObserver */
+[data-enter] {
+  animation: enter 0.9s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 80ms);
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+}
+
+.js [data-reveal] {
+  opacity: 0;
+  translate: 0 18px;
+  transition: opacity 0.8s var(--ease-out), translate 0.8s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+.js [data-reveal].in {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .js [data-reveal] {
+    opacity: 1;
+    translate: none;
+  }
+}

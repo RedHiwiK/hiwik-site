@@ -1,0 +1,346 @@
+---
+import { render } from 'astro:content';
+import { Image } from 'astro:assets';
+import AppLayout from '../layouts/AppLayout.astro';
+import Icon from '../components/Icon.astro';
+import { appSections } from '../lib/sections';
+import { t, pick, href, type Lang } from '../i18n';
+import type { AppConfig } from '../data/types';
+import type { Doc } from '../lib/docs';
+
+interface Props {
+  lang: Lang;
+  app: AppConfig;
+  doc: Doc;
+  fallback: boolean;
+  current: 'guide' | 'changelog' | 'support' | 'privacy' | 'terms';
+  /** 仅使用指南详情页 */
+  guide?: {
+    groupName?: string;
+    prev?: { title: string; url: string };
+    next?: { title: string; url: string };
+  };
+}
+
+const { lang, app, doc, fallback, current, guide } = Astro.props;
+const s = t(lang);
+const { Content, headings } = await render(doc);
+const toc = headings.filter((h) => h.depth === 2);
+const related = (await appSections(app, lang)).filter((x) => x.key !== current);
+---
+
+<AppLayout lang={lang} app={app} title={doc.data.title} description={doc.data.description} current={current}>
+  <div class="doc wrap">
+    <header class="doc-head">
+      {
+        guide ? (
+          <a class="crumb" href={href(lang, `/${app.slug}/guide`)}>
+            <Icon name="arrow-left" class="crumb-icon" />
+          {s.backToGuide}
+          </a>
+        ) : null
+      }
+      <a class="app-chip" href={href(lang, `/${app.slug}`)}>
+        <Image src={app.icon} alt="" width={48} height={48} class="chip-icon" />
+        <span>{pick(app.name, lang)}</span>
+        {guide?.groupName && <span class="chip-sub">/ {guide.groupName}</span>}
+      </a>
+      <h1>{doc.data.title}</h1>
+      {doc.data.description && <p class="desc">{doc.data.description}</p>}
+      {doc.data.updated && <p class="meta">{s.updated} {doc.data.updated}</p>}
+      {fallback && <p class="notice" lang="en">{s.zhOnlyNotice}</p>}
+    </header>
+
+    <div class={toc.length >= 3 ? 'doc-body has-toc' : 'doc-body'}>
+      {
+        toc.length >= 3 && (
+          <aside class="toc" aria-label={s.onThisPage}>
+            <p>{s.onThisPage}</p>
+            <ul>
+              {toc.map((h) => (
+                <li>
+                  <a href={`#${h.slug}`}>{h.text}</a>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )
+      }
+      <article class:list={['prose', { changelog: current === 'changelog' }]} lang={fallback ? 'zh-CN' : undefined}>
+        <Content />
+      </article>
+    </div>
+
+    {
+      guide && (guide.prev || guide.next) && (
+        <nav class="pager">
+          {guide.prev ? (
+            <a href={guide.prev.url}>
+              <small>{s.prev}</small>
+              <span>{guide.prev.title}</span>
+            </a>
+          ) : (
+            <span />
+          )}
+          {guide.next && (
+            <a href={guide.next.url} class="next">
+              <small>{s.next}</small>
+              <span>{guide.next.title}</span>
+            </a>
+          )}
+        </nav>
+      )
+    }
+
+    {
+      related.length > 0 && (
+        <nav class="related" aria-label={s.related}>
+          <h2>{s.related}</h2>
+          <ul>
+            {related.map((r) => (
+              <li>
+                <a href={r.url}>
+                  <Icon name={r.icon} class="rel-icon" />
+                  {r.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+  </div>
+</AppLayout>
+
+<style>
+  .doc {
+    padding-top: clamp(2.5rem, 7vw, 4.5rem);
+  }
+
+  .doc-head {
+    max-width: var(--measure);
+    margin-inline: auto;
+    display: grid;
+    gap: 0.6rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .crumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    justify-self: start;
+    font-size: 0.875rem;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.crumb-icon) {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .app-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-self: start;
+    padding: 0.3rem 0.8rem 0.3rem 0.35rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: var(--accent-soft);
+    transition: box-shadow 0.2s;
+  }
+
+  .app-chip:hover {
+    box-shadow: inset 0 0 0 1px var(--accent-line);
+  }
+
+  .chip-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 22.5%;
+  }
+
+  .chip-sub {
+    color: var(--ink-faint);
+    font-weight: 500;
+  }
+
+  .related {
+    max-width: var(--measure);
+    margin: 4.5rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .related h2 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--ink-faint);
+    margin-bottom: 0.9rem;
+  }
+
+  .related ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .related a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    background: var(--paper-raised);
+    box-shadow: 0 0 0 1px var(--rule);
+    transition: box-shadow 0.2s, color 0.2s;
+  }
+
+  .related a:hover {
+    color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent-line);
+  }
+
+  :global(.rel-icon) {
+    width: 1rem;
+    height: 1rem;
+    color: var(--accent);
+  }
+
+  .crumb:hover {
+    color: var(--accent);
+  }
+
+  h1 {
+    margin-top: 0.5rem;
+    font-size: clamp(2.1rem, 4.8vw, 3.1rem);
+    font-weight: 750;
+    letter-spacing: -0.03em;
+  }
+
+  .desc {
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+  }
+
+  .meta {
+    color: var(--ink-faint);
+    font-size: 0.875rem;
+  }
+
+  .notice {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--radius-sm);
+    background: var(--paper-sunken);
+    justify-self: start;
+  }
+
+  .doc-body {
+    padding-top: 0.5rem;
+  }
+
+  .doc-body > .prose {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  .toc {
+    display: none;
+  }
+
+  @media (min-width: 1100px) {
+    .doc-body.has-toc {
+      display: grid;
+      grid-template-columns: 1fr minmax(0, var(--measure)) 1fr;
+      gap: 3rem;
+    }
+
+    .has-toc > .prose {
+      grid-column: 2;
+      grid-row: 1;
+      margin: 0;
+    }
+
+    .toc {
+      display: block;
+      grid-column: 3;
+      grid-row: 1;
+      position: sticky;
+      top: 5.5rem;
+      align-self: start;
+      max-width: 14rem;
+      padding-top: 2.6rem;
+      font-size: 0.85rem;
+    }
+
+    .toc p {
+      font-weight: 600;
+      color: var(--ink-faint);
+      margin-bottom: 0.6rem;
+    }
+
+    .toc ul {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 0.9rem;
+      border-left: 1px solid var(--rule);
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .toc a {
+      color: var(--ink-soft);
+      line-height: 1.45;
+      display: block;
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+    }
+  }
+
+  .pager {
+    max-width: var(--measure);
+    margin: 4rem auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .pager a {
+    display: grid;
+    gap: 0.2rem;
+    padding: 1rem 1.15rem;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    transition: border-color 0.2s;
+  }
+
+  .pager a:hover {
+    border-color: var(--accent);
+  }
+
+  .pager .next {
+    text-align: right;
+    grid-column: 2;
+  }
+
+  .pager small {
+    color: var(--ink-faint);
+    font-size: 0.8rem;
+  }
+
+  .pager span {
+    font-weight: 600;
+  }
+</style>

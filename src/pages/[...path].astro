@@ -1,0 +1,80 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Hub from '../views/Hub.astro';
+import AppHome from '../views/AppHome.astro';
+import DocView from '../views/DocView.astro';
+import GuideIndex from '../views/GuideIndex.astro';
+import { langs, href, pick, type Lang } from '../i18n';
+import { apps } from '../data/apps';
+import type { AppConfig } from '../data/types';
+import { docNames, docPaths, guideSlugs, guidesFor, getDoc, type DocName } from '../lib/docs';
+
+type Route =
+  | { view: 'hub'; lang: Lang }
+  | { view: 'app'; lang: Lang; app: AppConfig }
+  | { view: 'doc'; lang: Lang; app: AppConfig; name: DocName }
+  | { view: 'guides'; lang: Lang; app: AppConfig }
+  | { view: 'guide'; lang: Lang; app: AppConfig; slug: string };
+
+// 所有页面由这一张路由表生成：中文无前缀，英文加 /en
+export const getStaticPaths = (async () => {
+  const routes: { path: string; props: Route }[] = [];
+  for (const lang of langs) {
+    routes.push({ path: '/', props: { view: 'hub', lang } });
+    for (const app of apps) {
+      const base = `/${app.slug}`;
+      routes.push({ path: base, props: { view: 'app', lang, app } });
+      const paths = await docPaths(app.slug);
+      for (const name of docNames) {
+        if (paths.includes(name)) routes.push({ path: `${base}/${name}`, props: { view: 'doc', lang, app, name } });
+      }
+      const slugs = await guideSlugs(app.slug);
+      if (slugs.length) routes.push({ path: `${base}/guide`, props: { view: 'guides', lang, app } });
+      for (const slug of slugs) routes.push({ path: `${base}/guide/${slug}`, props: { view: 'guide', lang, app, slug } });
+    }
+  }
+  return routes.map(({ path, props }) => ({
+    params: { path: href(props.lang, path).replace(/^\/|\/$/g, '') || undefined },
+    props,
+  }));
+}) satisfies GetStaticPaths;
+
+const route = Astro.props as Route;
+
+let guideProps;
+if (route.view === 'guide') {
+  const list = await guidesFor(route.app.slug, route.lang);
+  const i = list.findIndex((g) => g.slug === route.slug);
+  const link = (g?: (typeof list)[number]) =>
+    g && { title: g.doc.data.title, url: href(route.lang, `/${route.app.slug}/guide/${g.slug}`) };
+  const group = route.app.guideGroups?.find((g) => g.key === list[i].doc.data.group);
+  guideProps = {
+    doc: list[i],
+    groupName: group && pick(group.name, route.lang),
+    prev: link(list[i - 1]),
+    next: link(list[i + 1]),
+  };
+}
+const docRes = route.view === 'doc' ? await getDoc(route.app.slug, route.lang, route.name) : undefined;
+---
+
+{route.view === 'hub' && <Hub lang={route.lang} />}
+{route.view === 'app' && <AppHome lang={route.lang} app={route.app} />}
+{route.view === 'guides' && <GuideIndex lang={route.lang} app={route.app} />}
+{
+  route.view === 'doc' && docRes && (
+    <DocView lang={route.lang} app={route.app} doc={docRes.doc} fallback={docRes.fallback} current={route.name} />
+  )
+}
+{
+  route.view === 'guide' && guideProps && (
+    <DocView
+      lang={route.lang}
+      app={route.app}
+      doc={guideProps.doc.doc}
+      fallback={guideProps.doc.fallback}
+      current="guide"
+      guide={{ groupName: guideProps.groupName, prev: guideProps.prev, next: guideProps.next }}
+    />
+  )
+}
