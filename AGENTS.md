@@ -27,3 +27,7 @@ KunKunRed 所有 App 的官方站点合集：总览页 + 每个 App 一套独立
 
 ## 验证
 - 改完运行 `pnpm build`，通过后再报告完成。本地预览 `pnpm dev`。
+
+## 部署
+- 仓库 `RedHiwiK/hiwik-site`（public），push 到 `main` 后由 GitHub Actions 部署到 GitHub Pages，域名 https://apps.hiwik.cn/ （阿里云解析 `apps` CNAME → `redhiwik.github.io`；Pages 用 Actions 构建时自定义域名以仓库 Pages 设置为准，`public/CNAME` 只做记录）。
+- 根域名 `hiwik.cn` 留作他用，不要把本站绑到根域名。
