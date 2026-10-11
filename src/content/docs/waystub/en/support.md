@@ -39,6 +39,16 @@ No. It works on every device signed in to the same Apple account, and you can sh
 - Under Backup in Settings you can export a JSON backup or restore from one; restoring the same backup more than once won't create duplicates. Backups contain journey details and photo references, not the photos themselves.
 - Choose "Delete All Data" in Settings to permanently remove every journey from your device and iCloud. Photos in your library are not affected.
 
+## Data sources
+
+The place data built into Waystub comes from the following sources, organized, translated and supplemented:
+
+- Cities, coordinates and time zones: [GeoNames](https://www.geonames.org/), used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+- Chinese place names and station coordinates: [Wikidata](https://www.wikidata.org/), used under [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- Airports: [OurAirports](https://ourairports.com/), public domain.
+
+These sources are not affiliated with and do not endorse Waystub.
+
 ## Contact us
 
 Run into a problem or have an idea? Email us at [hongsikunjob@gmail.com](mailto:hongsikunjob@gmail.com). If you enjoy Waystub, a rating and review on the App Store means a lot to us.

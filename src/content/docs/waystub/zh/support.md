@@ -39,6 +39,16 @@ title: 技术支持
 - 在 App 设置的"备份"中可以导出 JSON 备份，也可以从备份恢复，同一份备份恢复多次不会产生重复。备份包含旅程信息和照片引用，不包含照片本身。
 - 在 App 设置中选择"删除全部数据"，会删除本机和 iCloud 中的全部旅程，无法恢复；相册里的照片不受影响。
 
+## 数据来源
+
+一票一程内置的地名数据来自以下来源，经过整理、翻译和补充：
+
+- 城市、坐标与时区：[GeoNames](https://www.geonames.org/)，按 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 许可使用。
+- 中文地名与车站坐标：[Wikidata](https://www.wikidata.org/)，按 [CC0](https://creativecommons.org/publicdomain/zero/1.0/) 使用。
+- 机场：[OurAirports](https://ourairports.com/)，公共领域。
+
+以上来源与一票一程无关联，也不为其背书。
+
 ## 联系我们
 
 遇到问题或有建议，欢迎发邮件到 [hongsikunjob@gmail.com](mailto:hongsikunjob@gmail.com)。如果你喜欢一票一程，也欢迎在 App Store 给我们打分和评价。
