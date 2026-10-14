@@ -5,7 +5,7 @@ updated: April 30, 2026
 
 ## 1. About the service
 
-CutePet Diary is a local pet-life journaling app offering pet profiles, diary entries, health tracking, local reminders and data export. By using the app you agree to all of these terms. If you do not agree, please stop using the app.
+Tailbook is a local pet-life journaling app offering pet profiles, diary entries, health tracking, local reminders and data export. By using the app you agree to all of these terms. If you do not agree, please stop using the app.
 
 ### 1.1 License
 
@@ -35,7 +35,7 @@ You bear all consequences arising from violating the above.
 
 ## 5. Paid services
 
-- CutePet Diary offers free basic features (up to 1 pet and 30 entries) and unlocks everything with a **Pro lifetime purchase**.
+- Tailbook offers free basic features (up to 1 pet and 30 entries) and unlocks everything with a **Pro lifetime purchase**.
 - **The app does not offer subscriptions of any kind.** All payments are one-time purchases for permanent use, with no renewals or recurring charges.
 - Payments are processed through Apple In-App Purchase and follow Apple's purchase terms.
 - You can restore past purchases on the Upgrade to Pro screen or in Home → Restore Purchases.
@@ -65,7 +65,7 @@ To the extent permitted by applicable law, the developer's total liability shall
 
 ## 8. Intellectual property
 
-The interface design, icons, illustrations, copy, code and other content of CutePet Diary are protected by copyright law. They may not be copied, modified, distributed or used for any commercial purpose without written permission.
+The interface design, icons, illustrations, copy, code and other content of Tailbook are protected by copyright law. They may not be copied, modified, distributed or used for any commercial purpose without written permission.
 
 ## 9. Changes to these terms
 

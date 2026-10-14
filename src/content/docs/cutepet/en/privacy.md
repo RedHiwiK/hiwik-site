@@ -5,7 +5,7 @@ updated: October 9, 2026
 
 ## Our commitment
 
-**CutePet Diary is a local-first app:**
+**Tailbook is a local-first app:**
 
 - The pet profiles, entries, photos, videos and other content you create are **stored only on your device and in your own private iCloud space**. The developer cannot access them
 - No account and no login. We do not collect identity information such as your name, phone number or email
@@ -14,7 +14,7 @@ updated: October 9, 2026
 
 ## 1. What we do not collect
 
-CutePet Diary does not collect any of the following:
+Tailbook does not collect any of the following:
 
 - Name, email, phone number or other identity information
 - Advertising identifier (IDFA), identifier for vendor (IDFV), device name
@@ -45,7 +45,7 @@ You can turn off iCloud sync at any time in Home → iCloud Sync. Once off, data
 
 ## 4. App permissions
 
-CutePet Diary requests the following system permissions only when you actively use the related feature:
+Tailbook requests the following system permissions only when you actively use the related feature:
 
 - **Camera**: to take photos of your pet (only when you tap "Take Photo")
 - **Photos**: to pick photos from your library or save photos to it
@@ -63,7 +63,7 @@ You can revoke any permission at any time in iOS Settings.
 ## 6. Data deletion
 
 - All data is removed from your device when you delete the app.
-- If iCloud sync is on, delete cloud data in iOS Settings → Apple ID → iCloud → Manage Account Storage → CutePet Diary.
+- If iCloud sync is on, delete cloud data in iOS Settings → Apple ID → iCloud → Manage Account Storage → Tailbook.
 - What you record is not on our servers. Anonymous usage statistics cannot be linked to a specific person; if you have questions, contact us at the email below.
 
 ## 7. Children's privacy

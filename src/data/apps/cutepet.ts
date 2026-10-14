@@ -3,7 +3,7 @@ import icon from '../../assets/icons/cutepet.png';
 
 const app: AppConfig = {
   slug: 'cutepet',
-  name: { zh: '萌宠日记', en: 'CutePet Diary' },
+  name: { zh: '萌宠日记', en: 'Tailbook' },
   headline: { zh: '记录每一个温暖瞬间', en: 'Every little milestone, remembered' },
   tagline: {
     zh: '给猫猫狗狗的成长本，日常、健康、花费都记下。',
@@ -11,7 +11,7 @@ const app: AppConfig = {
   },
   summary: {
     zh: '每一次撒娇、每一口零食、每一个小里程碑，都值得被用心珍藏。萌宠日记是为铲屎官打造的私密成长记录工具，猫咪、狗狗、兔子还是仓鼠，都能在这里拥有专属的成长档案。',
-    en: "Every cuddle, every treat, every little milestone deserves to be remembered. CutePet Diary is a private journal for your pet's life: cats, dogs, rabbits, hamsters and more each get their own growth story.",
+    en: "Every cuddle, every treat, every little milestone deserves to be remembered. Tailbook is a private journal for your pet's life: cats, dogs, rabbits, hamsters and more each get their own growth story.",
   },
   icon,
   appStoreId: '6759037476',

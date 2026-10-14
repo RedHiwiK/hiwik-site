@@ -53,7 +53,7 @@ export const ui = {
   en: {
     brand: 'KunKunRed',
     hubTitle: 'Apps by KunKunRed · crafted for everyday life',
-    hubDescription: 'iPhone apps by KunKunRed: Vitae, CutePet Diary, MoonLog and Waystub.',
+    hubDescription: 'iPhone apps by KunKunRed: Vitae, Tailbook, MoonLog and Waystub.',
     hubEyebrow: 'Apps by KunKunRed',
     hubStatement: 'Apps for everyday life,\neach one crafted with care.',
     hubLead: 'Money and health, your pet growing up, reviewing trades, and every ticket you have travelled on.',
