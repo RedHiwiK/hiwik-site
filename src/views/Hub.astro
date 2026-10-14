@@ -3,6 +3,9 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import avatar from '../assets/brand/avatar.png';
+import wordmark from '../assets/brand/wordmark.svg';
+import wordmarkWhite from '../assets/brand/wordmark-white.svg';
 import { t, pick, href, altHref, type Lang } from '../i18n';
 import { apps } from '../data/apps';
 import { appSections } from '../lib/sections';
@@ -24,7 +27,11 @@ const cards = await Promise.all(
 <Base lang={lang} title={s.hubTitle} description={s.hubDescription}>
   <header class="hub-header">
     <div class="wrap bar">
-      <a class="mark" href={href(lang, '/')}>KunKunRed<i aria-hidden="true"></i></a>
+      <a class="mark" href={href(lang, '/')} aria-label={s.brand}>
+        <Image src={avatar} alt="" width={32} height={32} densities={[2, 3]} class="logo" loading="eager" />
+        <img src={wordmark.src} alt="" width="2150" height="515" class="wm wm-light" aria-hidden="true" />
+        <img src={wordmarkWhite.src} alt="" width="2150" height="515" class="wm wm-dark" aria-hidden="true" />
+      </a>
       <div class="bar-end">
         <a class="about" href={s.authorUrl} target="_blank" rel="noopener">{s.aboutAuthor}</a>
         <ThemeToggle label={s.themeLabel} />
@@ -101,21 +108,40 @@ const cards = await Promise.all(
   }
 
   .mark {
-    position: relative;
-    font-family: var(--font-display);
-    font-weight: 750;
-    font-size: 1.15rem;
-    letter-spacing: -0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
   }
 
-  .mark i {
-    position: absolute;
-    top: 0.15rem;
-    right: -0.55rem;
-    width: 0.4rem;
-    height: 0.4rem;
+  .logo {
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    background: var(--brand);
+    box-shadow: 0 0 0 1px var(--rule);
+  }
+
+  .wm {
+    width: auto;
+    height: 26px;
+  }
+
+  /* 签名有黑白两版，跟随明暗模式切换 */
+  .wm-dark {
+    display: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .wm-light {
+      display: none;
+    }
+    :global(:root:not([data-theme='light'])) .wm-dark {
+      display: block;
+    }
+  }
+  :global(:root[data-theme='dark']) .wm-light {
+    display: none;
+  }
+  :global(:root[data-theme='dark']) .wm-dark {
+    display: block;
   }
 
   .bar-end {
