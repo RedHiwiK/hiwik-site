@@ -3,6 +3,55 @@ title: What's New
 description: Every update is about keeping you better company.
 ---
 
+## v2.4.8 *October 2026*
+
+### A Brand-New Growth Journal
+
+- Create a PDF from Cottage → Export Data: browse each day month by month, with photos laid out automatically and highlights that stand out
+
+## v2.4.7 *October 2026*
+
+### CutePet Diary is now Tailbook
+
+- Same app, same pets and entries, just a name that's easier to remember
+
+### Now in Japanese
+
+- Switch to 日本語 anytime in Cottage Settings › Language, just like English and 繁體中文
+
+### Choose your currency
+
+- Pick your usual currency in Cottage Settings › Personalization › Currency, and your expense book will show the matching symbol
+
+### Improvements
+
+- Bug fixes and tweaks to make capturing every cute moment smoother
+
+## v2.4.6 *October 2026*
+
+### English & Traditional Chinese
+
+- Switch to English or Traditional Chinese in Cottage Settings › Language, or just follow your system
+
+### A fresh look for dates
+
+- Date and time pickers for entries and reminders now wear the Cottage's warm colors
+
+### Improvements
+
+- Bug fixes and tweaks to make capturing every cute moment smoother
+
+## v2.4.5 *September 2026*
+
+### A new Clothing category for supplies
+
+- Sweaters, collars and leashes now have their own Clothing category, so they're easy to find
+
+### Improvements
+
+- Entry details no longer show the time twice, for a cleaner look
+- Bug fixes and tweaks to make capturing every cute moment smoother
+
 ## v2.4.4 *September 2026*
 
 ### Highlights, redesigned
