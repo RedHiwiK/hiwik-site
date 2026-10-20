@@ -6,12 +6,12 @@ const app: AppConfig = {
   name: { zh: '平生', en: 'Vitae' },
   headline: { zh: '把日子，记成习惯', en: 'Make your days a habit' },
   tagline: {
-    zh: '账单、资产、健康、健身、待办、日子，一个 App 记下生活。',
-    en: 'Bills, assets, health, workouts, todos and the days that matter, all in one place.',
+    zh: '账单、资产、物品、健康、健身、待办、日子，一个 App 记下生活。',
+    en: 'Bills, assets, belongings, health, workouts, todos and the days that matter, all in one place.',
   },
   summary: {
-    zh: '平生把记账、资产、健康、饮食、健身、待办和日子放在一起。付款截图丢进来，AI 帮你变成一笔账；拍一张餐盘，AI 识别食物和营养；重要的日子会倒数提醒；每周、每月还会帮你做一次跨维度的复盘。',
-    en: 'Vitae brings bookkeeping, assets, health, diet, workouts, todos and important days together. Drop in a payment screenshot and AI turns it into a ledger entry; snap your plate and it recognises the food and nutrition; important days get countdown reminders; and every week and month it reviews patterns across all of it.',
+    zh: '平生把记账、资产、物品、健康、饮食、健身、待办和日子放在一起。付款截图丢进来，AI 帮你变成一笔账；拍一张餐盘，AI 识别食物和营养；重要的日子会倒数提醒；每周、每月还会帮你做一次跨维度的复盘。',
+    en: 'Vitae brings bookkeeping, assets, belongings, health, diet, workouts, todos and important days together. Drop in a payment screenshot and AI turns it into a ledger entry; snap your plate and it recognises the food and nutrition; important days get countdown reminders; and every week and month it reviews patterns across all of it.',
   },
   icon,
   appStoreId: '6763250273',
@@ -62,6 +62,14 @@ const app: AppConfig = {
       body: {
         zh: '纪念日、生日、重要节点记在一处，倒数与正数一目了然，到日子前提醒你。',
         en: 'Anniversaries, birthdays and milestones in one place, counting down or up, with a reminder before each one arrives.',
+      },
+    },
+    {
+      icon: 'package',
+      title: { zh: '物品', en: 'Belongings' },
+      body: {
+        zh: '拍照或识别订单截图，把家里的东西收进物柜；记下价格、位置和保修期，到期前提醒，不常用的东西还能算出每次使用成本。',
+        en: 'Add the things you own from a photo or an order screenshot. Keep price, location and warranty in one place, get reminded before dates are due, and see the cost per use of things you rarely use.',
       },
     },
     {

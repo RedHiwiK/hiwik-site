@@ -22,6 +22,7 @@ const cards = await Promise.all(
     links: (await appSections(app, lang)).filter((x) => ['support', 'privacy', 'terms'].includes(x.key)),
   })),
 );
+import Beian from '../components/Beian.astro';
 ---
 
 <Base lang={lang} title={s.hubTitle} description={s.hubDescription}>
@@ -89,6 +90,7 @@ const cards = await Promise.all(
   <footer class="hub-footer">
     <div class="wrap foot">
       <span>© 2026 KunKunRed</span>
+      <Beian />
       <a href={s.authorUrl} target="_blank" rel="noopener">{s.aboutAuthor} ↗</a>
     </div>
   </footer>

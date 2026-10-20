@@ -1,6 +1,7 @@
 ---
 import Base from './Base.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import Beian from '../components/Beian.astro';
 import { Image } from 'astro:assets';
 import { t, pick, href, altHref, type Lang } from '../i18n';
 import type { AppConfig } from '../data/types';
@@ -84,6 +85,7 @@ const pageTitle = title ? `${title} · ${name}` : `${name} · ${pick(app.headlin
       }
       <div class="foot-base">
         <span>© 2026 KunKunRed</span>
+        <Beian />
         <a href={href(lang, '/')}>{s.moreApps} →</a>
       </div>
     </div>

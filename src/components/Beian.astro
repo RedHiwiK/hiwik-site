@@ -1,0 +1,28 @@
+---
+import icon from '../assets/beian.png';
+
+// 公安联网备案：每个页面的页脚都要显示，链接到全国互联网安全管理服务平台的查询页
+const text = '闽公网安备35020502001161号';
+const url = 'https://beian.mps.gov.cn/#/query/webSearch?code=35020502001161';
+---
+
+<a class="beian" href={url} rel="noreferrer" target="_blank" lang="zh-CN"><img src={icon.src} alt="" width="16" height="18" />{text}</a>
+
+<style>
+  .beian {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .beian:hover {
+    color: var(--ink);
+  }
+
+  .beian img {
+    width: 16px;
+    height: 18px;
+  }
+</style>

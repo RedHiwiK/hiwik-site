@@ -3,6 +3,52 @@ title: "What's New"
 description: "What's new in every Vitae release."
 ---
 
+## v1.5.0 *October 20, 2026*
+
+### What's New
+
+- <strong>New module: Belongings</strong>: add items with a photo or an order screenshot, import them from your ledger, or find a product image by name. Track price, location and tags. Open it from the module switcher.
+- <strong>Cost per use</strong>: turn on usage tracking for things you rarely use, like a camera or a tent. Log each use to see the cost per use, and a heatmap shows what is gathering dust.
+- <strong>Organize and reminders</strong>: add items to the organize box and go through them one by one. Get reminded before warranties, expiry dates and maintenance are due, and silence the ones that have already lapsed.
+- <strong>30 new exercises</strong>: Smith machine, pec deck, kettlebell swings, farmer's carry and more. Over 110 built-in exercises, each illustrated in male and female versions.
+
+### Improvements & Fixes
+
+- Vitae now takes up less iCloud space and syncs faster.
+
+## v1.4.9 *October 8, 2026*
+
+### What's New
+
+- <strong>Data export</strong>: export your finance, health and other data as a JSON file from Settings → General, ready for an AI assistant to analyze.
+
+### Improvements & Fixes
+
+- In regions that use a comma as the decimal separator, balances, limits, exchange rates and nutrition values can now be entered normally. Balances also accept negative numbers.
+- Screenshot recognition now records times in your phone's current time zone, so they're no longer off by hours when you're abroad.
+- Foods added from photos now go straight into the meal you picked.
+
+## v1.4.8 *September 26, 2026*
+
+### What's New
+
+- <strong>More currencies</strong>: added EUR, JPY, GBP, KRW, SGD, AUD and TWD — search to find a currency quickly.
+
+### Improvements & Fixes
+
+- Improved number input, date picking and various interaction details.
+
+## v1.4.7 *September 15, 2026*
+
+### What's New
+
+- <strong>Faster refund entries</strong>: record a refund directly from an expense. The amount, account and note are prefilled and remain editable.
+- <strong>Clearer day reminders</strong>: notifications now include the day's name and remaining time, so each reminder is clear at a glance.
+
+### Improvements & Fixes
+
+- Improved tab bar and quick-entry behavior on earlier iOS versions for a more reliable experience.
+
 ## v1.4.6 *August 28, 2026*
 
 ### What's New

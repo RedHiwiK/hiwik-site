@@ -28,7 +28,7 @@ Waystub syncs through Apple's iCloud. Make sure your devices are signed in to th
 
 ### What does Waystub Pro include?
 
-A one-time purchase, yours forever: footprints for every year with year-over-year comparison, the full year report, all 10 illustrated ticket papers, and share cards without the watermark. Importing, photo matching, iCloud sync and backups are always free, with no per-ticket fees.
+A one-time purchase, yours forever: footprints for every year with year-over-year comparison, the full year report, all 10 illustrated ticket papers, and clean share cards without the Waystub mark. Importing, photo matching, iCloud sync and backups are always free, with no per-ticket fees.
 
 ### Do I need to buy again on a new phone or for my family?
 
