@@ -74,10 +74,10 @@ const app: AppConfig = {
     },
     {
       icon: 'gem',
-      title: { zh: '一次买断', en: 'One-time purchase' },
+      title: { zh: '免费起步', en: 'Free to start' },
       body: {
-        zh: 'Pro 一次性买断，无订阅、无续费。免费版即可使用全部核心功能，记录较多时再升级解锁无限记录。',
-        en: 'Pro is a one-time purchase with no subscriptions or renewals. All core features are free; upgrade only when you want unlimited entries.',
+        zh: '免费版即可使用全部核心功能，记录较多时再升级 Pro 解锁无限记录。Pro 支持一次买断、永久使用，部分地区另提供月度、年度订阅。',
+        en: 'All core features are free; upgrade to Pro only when you want unlimited entries. Choose a monthly plan, a yearly plan with a 7-day free trial, or a one-time lifetime purchase.',
       },
     },
   ],

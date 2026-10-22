@@ -1,6 +1,6 @@
 ---
 title: Terms of Use
-updated: April 30, 2026
+updated: October 22, 2026
 ---
 
 ## 1. About the service
@@ -35,16 +35,24 @@ You bear all consequences arising from violating the above.
 
 ## 5. Paid services
 
-- Tailbook offers free basic features (up to 1 pet and 30 entries) and unlocks everything with a **Pro lifetime purchase**.
-- **The app does not offer subscriptions of any kind.** All payments are one-time purchases for permanent use, with no renewals or recurring charges.
+- Tailbook offers free basic features (up to 1 pet and 30 entries). Tailbook Pro unlocks everything and is available as a **lifetime one-time purchase** or, in some countries and regions, as a **monthly or yearly auto-renewable subscription**. The options and prices shown in the app apply.
+- The lifetime purchase is a one-time payment for permanent use, with no renewals or recurring charges.
 - Payments are processed through Apple In-App Purchase and follow Apple's purchase terms.
 - You can restore past purchases on the Upgrade to Pro screen or in Home → Restore Purchases.
 - Refund requests are handled through Apple's official channels (Settings → Apple ID → Media & Purchases → Purchase History → Request a Refund).
 
-### 5.1 Price changes
+### 5.1 Auto-renewable subscriptions
+
+- Payment is charged to your Apple ID account when you confirm the purchase.
+- A subscription renews automatically at the end of each period unless you turn off auto-renew at least 24 hours before the current period ends. Your account is charged for renewal within 24 hours before the current period ends, at the price shown at that time.
+- If the yearly plan includes a free trial, it converts to a paid yearly subscription when the trial ends unless you cancel at least 24 hours before the trial ends. Any unused portion of a free trial is forfeited when you purchase a subscription.
+- You can manage or cancel subscriptions in Settings → Apple ID → Subscriptions. Cancelling stops future renewals; Pro remains available until the end of the current paid period.
+
+### 5.2 Price changes
 
 - The features and allowances of the free version (such as limits on pets and entries) may change with app updates.
 - The price of the Pro lifetime purchase may change as the app evolves. Users who have already purchased are not affected by later price changes.
+- Subscription price changes follow Apple's rules: Apple notifies you in advance and, where required, asks for your consent before a higher price applies.
 
 ## 6. Data storage and backup
 
