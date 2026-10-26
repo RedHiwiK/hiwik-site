@@ -3,6 +3,19 @@ title: "What's New"
 description: "What's new in every Vitae release."
 ---
 
+## v1.5.1 *October 24, 2026*
+
+### What's New
+
+- <strong>Traditional Chinese</strong>: switch to Traditional Chinese in Settings → Language. English text has been fully revised, and AI analysis now replies in your language.
+- <strong>Pounds supported</strong>: switch lifting and body weight between kg and lb. Entries and stats follow your choice.
+- <strong>Item quantities</strong>: record how many of an item you have and adjust it right on the detail page. "Used Up" is now a retirement reason.
+- <strong>A better to-do calendar</strong>: rings in the week bar show each day's progress, and checked tasks move to Completed. Swipe between months in Upcoming and tap a day to edit its tasks.
+
+### Improvements & Fixes
+
+- Fixed a blank flash when tapping + to add a transaction, occasional failures in workout analysis and food recognition, and small categories missing from donut charts.
+
 ## v1.5.0 *October 20, 2026*
 
 ### What's New
