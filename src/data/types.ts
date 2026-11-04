@@ -23,4 +23,12 @@ export interface AppConfig {
   /** 使用指南的分组，顺序即展示顺序；guide 文档 frontmatter 的 group 对应 key */
   guideGroups?: { key: string; name: L }[];
   contactEmail: string;
+  /** 活动海报页 /<slug>/activity，只从 App 内入口打开，不进导航 */
+  activity?: {
+    title: L;
+    description: L;
+    /** 窄屏用竖版，宽屏用横版 */
+    poster: { portrait: ImageMetadata; landscape: ImageMetadata; alt: L };
+    cta: { label: L; url: string };
+  };
 }

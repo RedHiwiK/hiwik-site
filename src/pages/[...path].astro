@@ -4,6 +4,7 @@ import Hub from '../views/Hub.astro';
 import AppHome from '../views/AppHome.astro';
 import DocView from '../views/DocView.astro';
 import GuideIndex from '../views/GuideIndex.astro';
+import ActivityPage from '../views/ActivityPage.astro';
 import { langs, href, pick, type Lang } from '../i18n';
 import { apps } from '../data/apps';
 import type { AppConfig } from '../data/types';
@@ -14,7 +15,8 @@ type Route =
   | { view: 'app'; lang: Lang; app: AppConfig }
   | { view: 'doc'; lang: Lang; app: AppConfig; name: DocName }
   | { view: 'guides'; lang: Lang; app: AppConfig }
-  | { view: 'guide'; lang: Lang; app: AppConfig; slug: string };
+  | { view: 'guide'; lang: Lang; app: AppConfig; slug: string }
+  | { view: 'activity'; lang: Lang; app: AppConfig };
 
 // 所有页面由这一张路由表生成：中文无前缀，英文加 /en
 export const getStaticPaths = (async () => {
@@ -31,6 +33,7 @@ export const getStaticPaths = (async () => {
       const slugs = await guideSlugs(app.slug);
       if (slugs.length) routes.push({ path: `${base}/guide`, props: { view: 'guides', lang, app } });
       for (const slug of slugs) routes.push({ path: `${base}/guide/${slug}`, props: { view: 'guide', lang, app, slug } });
+      if (app.activity) routes.push({ path: `${base}/activity`, props: { view: 'activity', lang, app } });
     }
   }
   return routes.map(({ path, props }) => ({
@@ -61,6 +64,7 @@ const docRes = route.view === 'doc' ? await getDoc(route.app.slug, route.lang, r
 {route.view === 'hub' && <Hub lang={route.lang} />}
 {route.view === 'app' && <AppHome lang={route.lang} app={route.app} />}
 {route.view === 'guides' && <GuideIndex lang={route.lang} app={route.app} />}
+{route.view === 'activity' && <ActivityPage lang={route.lang} app={route.app} />}
 {
   route.view === 'doc' && docRes && (
     <DocView lang={route.lang} app={route.app} doc={docRes.doc} fallback={docRes.fallback} current={route.name} />

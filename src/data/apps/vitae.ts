@@ -1,5 +1,7 @@
 import type { AppConfig } from '../types';
 import icon from '../../assets/icons/vitae.png';
+import activityPortrait from '../../assets/activity/vitae-portrait.png';
+import activityLandscape from '../../assets/activity/vitae-landscape.png';
 
 const app: AppConfig = {
   slug: 'vitae',
@@ -123,6 +125,22 @@ const app: AppConfig = {
     { key: 'todo', name: { zh: '待办', en: 'To-do' } },
   ],
   contactEmail: 'hongsikunjob@gmail.com',
+  activity: {
+    title: { zh: '记录生活，赢取 PRO 会员', en: 'Record your life, win PRO' },
+    description: {
+      zh: '在小红书 / 抖音发布平生记录，参与活动赢取 PRO 会员奖励。点赞越多，奖励越丰厚。',
+      en: 'Share your Vitae records on Xiaohongshu or Douyin to win PRO membership. The more likes, the bigger the reward.',
+    },
+    poster: {
+      portrait: activityPortrait,
+      landscape: activityLandscape,
+      alt: { zh: '记录生活，赢取 PRO 会员 — 平生活动', en: 'Record your life, win PRO — Vitae event' },
+    },
+    cta: {
+      label: { zh: '立即参与，提交记录', en: 'Join now, submit your record' },
+      url: 'https://qx5i9lhzkm6.feishu.cn/share/base/form/shrcnTXJ1MTwxrhOdq2W8xDJSuf',
+    },
+  },
 };
 
 export default app;

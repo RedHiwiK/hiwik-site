@@ -1,0 +1,98 @@
+---
+import AppLayout from '../layouts/AppLayout.astro';
+import { getImage } from 'astro:assets';
+import { pick, type Lang } from '../i18n';
+import type { AppConfig } from '../data/types';
+
+interface Props {
+  lang: Lang;
+  app: AppConfig;
+}
+
+const { lang, app } = Astro.props;
+const activity = app.activity!;
+const { poster } = activity;
+const portrait = await getImage({ src: poster.portrait, width: 1024, format: 'webp' });
+const landscape = await getImage({ src: poster.landscape, width: 1693, format: 'webp' });
+---
+
+<AppLayout lang={lang} app={app} title={pick(activity.title, lang)} description={pick(activity.description, lang)}>
+  <div class="activity">
+    <picture>
+      <source media="(min-width: 769px)" srcset={landscape.src} width={poster.landscape.width} height={poster.landscape.height} />
+      <img
+        src={portrait.src}
+        width={poster.portrait.width}
+        height={poster.portrait.height}
+        alt={pick(poster.alt, lang)}
+      />
+    </picture>
+  </div>
+  <div class="cta-bar">
+    <a class="cta" href={activity.cta.url} target="_blank" rel="noopener">
+      {pick(activity.cta.label, lang)} <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</AppLayout>
+
+<style>
+  .activity {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 0 calc(6rem + env(safe-area-inset-bottom, 0px));
+  }
+  .activity img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  @media (min-width: 769px) {
+    .activity {
+      max-width: var(--wide);
+      padding: 2rem var(--gutter) 7rem;
+    }
+    .activity img {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+  .cta-bar {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    padding: 1rem var(--gutter) calc(1rem + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(to top, var(--paper) 60%, transparent);
+    pointer-events: none;
+  }
+  .cta {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 26rem;
+    padding: 1rem 1.75rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--on-accent);
+    text-decoration: none;
+    background: var(--accent);
+    border-radius: 999px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.18s var(--ease-out);
+  }
+  .cta:hover {
+    transform: translateY(-2px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cta {
+      transition: none;
+    }
+    .cta:hover {
+      transform: none;
+    }
+  }
+</style>
