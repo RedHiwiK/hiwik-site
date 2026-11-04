@@ -3,6 +3,16 @@ title: "What's New"
 description: "What's new in every Vitae release."
 ---
 
+## v1.5.2 *November 3, 2026*
+
+### What's New
+
+- <strong>Lift the subject from food photos</strong>: photo recognition and custom foods now support Lift Subject, removing the photo background in one tap.
+
+### Improvements & Fixes
+
+- Fixed some known issues.
+
 ## v1.5.1 *October 24, 2026*
 
 ### What's New
