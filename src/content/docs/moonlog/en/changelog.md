@@ -3,6 +3,12 @@ title: "What's New"
 description: "What's new in every MoonLog release."
 ---
 
+## v1.4.4 *November 7, 2026*
+
+### Improvements & Fixes
+
+- Fixed some known issues.
+
 ## v1.4.3 *October 27, 2026*
 
 ### Improvements & Fixes
