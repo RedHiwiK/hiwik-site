@@ -15,7 +15,6 @@ const app: AppConfig = {
   },
   icon,
   appStoreId: '6820545030',
-  comingSoon: true,
   features: [
     {
       icon: 'scan-line',
