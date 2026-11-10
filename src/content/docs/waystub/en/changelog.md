@@ -3,7 +3,7 @@ title: "What's New"
 description: "What's new in every Waystub release."
 ---
 
-## v1.0 *November 10, 2026*
+## v1.0 *November 9, 2026*
 
 ### First Release
 
