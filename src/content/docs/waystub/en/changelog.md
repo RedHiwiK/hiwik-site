@@ -3,6 +3,16 @@ title: "What's New"
 description: "What's new in every Waystub release."
 ---
 
+## v1.0.1 *November 12, 2026*
+
+### Improvements and Fixes
+
+- When one ticket of a round trip was imported before, the other one can be merged into that journey.
+- Importing the same ticket again from another screenshot, message or text is now recognized, with a shortcut to the existing journey.
+- More accurate recognition of PDF invoices and flight itineraries, and rail invoices no longer show the wrong departure station.
+- Fixed clipped and overlapping text on smaller iPhones and in English.
+- Ticket styles now show their own descriptions.
+
 ## v1.0 *November 9, 2026*
 
 ### First Release
