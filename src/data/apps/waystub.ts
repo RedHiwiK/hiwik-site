@@ -36,16 +36,16 @@ const app: AppConfig = {
       icon: 'images',
       title: { zh: '找回那几天的照片', en: 'Bring back the photos' },
       body: {
-        zh: '按出发到回来的日期，把相册里的照片和视频整理到旅程里，实况照片、视频都能直接播放。照片只在本机整理，不会上传。',
-        en: 'Photos and videos from the days of the trip are gathered into the journey, and Live Photos and videos play right in the app. Photos are organized on your device and never uploaded.',
+        zh: '按出发到回来的日期，把相册里的照片和视频整理到旅程里，实况照片、视频都能直接播放。出发前就能先导入票，回来后在旅程里找回那几天的照片。照片只在本机整理，不会上传。',
+        en: 'Photos and videos from the days of the trip are gathered into the journey, and Live Photos and videos play right in the app. Import tickets before you go and find the photos from the journey once you\'re back. Photos are organized on your device and never uploaded.',
       },
     },
     {
       icon: 'map-pinned',
       title: { zh: '足迹地图', en: 'Footprint map' },
       body: {
-        zh: '去过的城市、走过的里程、最常往返的线路。设置常驻地，往返自动合并，回家的路不会被当成一次旅行。',
-        en: 'Cities visited, distance traveled, your most frequent routes. Set your home city so round trips merge and the way home is not counted as a trip.',
+        zh: '去过的城市、国家和地区，走过的里程、最常往返的线路。设置常驻地，往返自动合并，回家的路不会被当成一次旅行。',
+        en: 'Cities, countries and regions visited, distance traveled, your most frequent routes. Set your home city so round trips merge and the way home is not counted as a trip.',
       },
     },
     {

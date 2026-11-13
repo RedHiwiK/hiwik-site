@@ -3,6 +3,18 @@ title: "What's New"
 description: "What's new in every Waystub release."
 ---
 
+## v1.0.2 *November 13, 2026*
+
+### New Features
+
+- Import tickets before you go: upcoming trips show an "Upcoming" tag and a countdown, and you can find the photos when you're back.
+- For past trips without photos, find the photos from those days right from the journey page.
+- Footprint now lists the countries and regions you've visited.
+
+### Improvements and Fixes
+
+- Bug fixes.
+
 ## v1.0.1 *November 12, 2026*
 
 ### Improvements and Fixes
