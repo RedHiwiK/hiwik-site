@@ -1,6 +1,6 @@
 ---
 title: "Diet Log & Calories"
-description: "Log meals by breakfast/lunch/dinner/snack, search foods and fill in portions to total calories, and compare against your carb/protein/fat goals."
+description: "Type or speak a sentence, take a photo directly, or use the food library from the bottom bar. Log by meal, check nutrition goals, and undo mistakes."
 group: "health"
 order: 10
 ---
@@ -9,18 +9,20 @@ The <strong>Diet</strong> tab at the bottom of the Health module lets you log wh
 
 <video src="/vitae/videos/health-diet-demo.mp4" controls playsinline preload="metadata" poster="/vitae/images/screenshots/tutorials/health-diet-poster.png"></video>
 
-## Log a Meal
+## Log a Meal from the Bottom Bar
 
-1. <strong>Pick a meal</strong>. On the Diet page, find <strong>breakfast / lunch / dinner / snack</strong> and tap the <strong>"+"</strong> on the matching row.
-2. <strong>Find a food</strong>. <strong>Search</strong> the food name directly (such as "milk" or "bread"), or switch between <strong>Frequent / Favorites / Custom</strong>, and you can also browse by categories like <strong>Grains / Meat, Eggs & Dairy / Seafood / Vegetables</strong>.
-3. <strong>Enter the portion</strong>. After selecting a food, enter the <strong>grams or milliliters</strong>, and calories and carbs / protein / fat are converted automatically by portion; tap <strong>"Favorite"</strong> on foods you eat often to find them faster next time.
-4. <strong>Confirm the entry</strong>. You can select several items at once; the bottom shows <strong>"N selected · XXX kcal"</strong>, and tapping <strong>"Log"</strong> adds them to the meal.
+- <strong>Text</strong>: type a description such as “beef noodles for lunch” and send. AI identifies foods, estimates nutrition and logs the meal directly.
+- <strong>Voice</strong>: tap the voice button to start, then tap again to finish. The transcript follows the same logging flow.
+- <strong>Camera</strong>: tap the camera button to take a photo directly. To use an existing photo, open the photo entry inside the <strong>food library</strong>.
+- <strong>Food library</strong>: search or choose foods under <strong>All / Favorites / Custom</strong>, enter portions, choose a meal and log. Frequent foods are sorted by logging frequency.
+
+Text and voice logs show an <strong>Undo</strong> confirmation so you can immediately reverse a mistake. The original video on this page shows the previous entry point; use the bottom input bar in the current version.
 
 ## Check Nutrition, Set Goals
 
 - <strong>Calories consumed</strong>: the top of the page shows the total calories consumed for the day and the goal (such as "Goal 3,000").
-- <strong>Nutrition intake rings</strong>: the rings below show the proportion and grams of <strong>carbs / protein / fat</strong>, with progress bars to compare against the goal.
-- <strong>Goal settings</strong>: tap <strong>"Goal Settings"</strong> in the top-right corner of the nutrition intake card to set daily targets for calories and the three macronutrients.
+- <strong>Macro progress</strong>: the calorie card shows consumed grams, targets and matching progress bars for <strong>carbs / protein / fat</strong>.
+- <strong>Goal settings</strong>: tap the <strong>calorie card</strong> at the top to set daily calorie and macro targets.
 
 ## FAQ
 
@@ -30,8 +32,8 @@ Switch to <strong>"Custom"</strong> to create your own food—you can <strong>ta
 
 ### What if I logged the wrong meal or portion?
 
-Open that entry under the corresponding meal to change the portion or delete it; after deleting, the day's calories and nutrition are recalculated accordingly.
+Tap Undo while the text / voice logging confirmation is visible. For existing records, open an entry to edit it or swipe left to delete it. Daily calories and nutrition update automatically.
 
 ### Do I have to search again for the few things I eat often?
 
-No. When entering the portion, tap <strong>"Favorite"</strong>, and afterwards you can spot it at a glance in the <strong>"Favorites"</strong> tab; recently logged items also go into <strong>"Frequent"</strong>.
+No. When entering the portion, tap <strong>"Favorite"</strong>, and afterwards you can spot it at a glance in the <strong>"Favorites"</strong> tab; frequent foods are sorted by logging frequency under <strong>"All"</strong>.

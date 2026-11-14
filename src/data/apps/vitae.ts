@@ -12,8 +12,8 @@ const app: AppConfig = {
     en: 'Bills, assets, belongings, health, workouts, todos and the days that matter, all in one place.',
   },
   summary: {
-    zh: '平生把记账、资产、物品、健康、饮食、健身、待办和日子放在一起。付款截图丢进来，AI 帮你变成一笔账；拍一张餐盘，AI 识别食物和营养；重要的日子会倒数提醒；每周、每月还会帮你做一次跨维度的复盘。',
-    en: 'Vitae brings bookkeeping, assets, belongings, health, diet, workouts, todos and important days together. Drop in a payment screenshot and AI turns it into a ledger entry; snap your plate and it recognises the food and nutrition; important days get countdown reminders; and every week and month it reviews patterns across all of it.',
+    zh: '平生把记账、资产、物品、健康、饮食、健身、待办和日子放在一起。付款截图丢进来，AI 帮你变成一笔账；拍一张餐盘，AI 识别食物和营养；重要的日子会倒数提醒；在自知的「此刻」看本周变化，在「回顾」回看一周或一个月，需要时再手动生成 AI 来信。',
+    en: 'Vitae brings bookkeeping, assets, belongings, health, diet, workouts, todos and important days together. Drop in a payment screenshot and AI turns it into a ledger entry; snap your plate and it recognises the food and nutrition; important days get countdown reminders; see this week’s changes in Now, look back on a week or month in Reviews, and request an AI letter when you want another perspective.',
   },
   icon,
   appStoreId: '6763250273',
@@ -38,16 +38,16 @@ const app: AppConfig = {
       icon: 'salad',
       title: { zh: '食物识别与饮食记录', en: 'Meal recognition and diet log' },
       body: {
-        zh: '拍一张餐桌的照片，AI 识别菜品、估算份量与营养；蛋白、碳水、脂肪自动汇总，和 Apple 健康的活动数据放在一起看。',
-        en: 'Snap your table and AI identifies dishes, estimates portions and nutrition. Protein, carbs and fat add up automatically, alongside your Apple Health activity.',
+        zh: '从饮食页底部输入或说一句话、直接拍照，或打开食物库记录；AI 估算食物与营养，文字和语音记入后可撤销，每日热量与三大营养素自动汇总。',
+        en: 'Type or speak a sentence, take a photo directly, or open the food library from the bottom of Diet. AI estimates foods and nutrition, text and voice logs can be undone, and daily calories and macros add up automatically.',
       },
     },
     {
       icon: 'dumbbell',
       title: { zh: '健身计划与动作库', en: 'Workout plans and exercise library' },
       body: {
-        zh: '内置常见训练动作，自由组合训练计划；重量、组数、时长、距离按动作类型自动记录。',
-        en: 'A built-in library of common exercises to build plans from. Weight, sets, duration and distance are tracked to match each exercise.',
+        zh: '内置 110+ 训练动作，自由组合计划并设置每周、每月或指定日期的训练日；每组预填上次成绩，最近练过的计划可以一键再练。',
+        en: 'Build plans from 110+ exercises and schedule training by weekday, day of the month, or specific dates. Sets are prefilled with your last results, and recent plans are ready to repeat.',
       },
     },
     {
@@ -76,10 +76,10 @@ const app: AppConfig = {
     },
     {
       icon: 'sparkles',
-      title: { zh: '自知周 / 月复盘', en: 'Weekly and monthly reviews' },
+      title: { zh: '自知：此刻与回顾', en: 'Self-Knowing: Now and Reviews' },
       body: {
-        zh: '一键生成周记、月记：AI 汇总账单、训练、饮食、待办，找出亮点、模式和值得追问的问题。',
-        en: 'Generate a weekly or monthly review in one tap. AI pulls together spending, workouts, meals and to-dos to surface highlights, patterns and questions worth asking.',
+        zh: '「此刻」呈现本周和平时不同的地方；「回顾」自动整理周 / 月变化和记录间的关系，不需要调用 AI。想换个角度时，再手动生成 AI 来信；旧版教练已下线。',
+        en: 'Now shows how this week differs from usual. Reviews automatically brings together weekly or monthly changes and relationships without an AI request. Manually request an AI letter for another perspective; the former Coach is no longer available.',
       },
     },
   ],

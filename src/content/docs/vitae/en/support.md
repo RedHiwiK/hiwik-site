@@ -16,13 +16,21 @@ Vitae syncs via Apple CloudKit. Make sure: (1) all your devices are signed in to
 
 Tap 'Scan Receipt' while adding an entry and AI fills in amount, time and category for you — <strong>please double-check the key fields before saving</strong>. The original image is not persisted. If the recognition is clearly off, attach the screenshot via Settings → App Feedback and we'll keep improving it.
 
-### What data does AI Reflections use?
+### How do Now, Reviews and AI letters differ?
 
-The 'Self Know' module can generate a <strong>weekly or monthly review</strong> in one tap. AI mines the period for highlights, patterns and questions worth asking. Explicit consent is required on first use; there is a daily call cap. The process <strong>does not send raw images and does not send sensitive raw data like health or location</strong> — only brief text from the modules you opted in.
+Now shows how this week differs from usual. Reviews automatically summarizes changes and relationships across a week or month; neither requires an AI request. The former Coach is no longer available, and the old weekly / monthly notes are no longer the main entry point. For another perspective, manually request an AI letter from a review. First use requires consent, and calls are subject to membership access and quotas. Letter generation sends brief text and summaries for the period, which may include health, diet and workout summaries, but not raw images, item names or important-date titles.
+
+### What are the four Health tabs for?
+
+<strong>Body / Diet / Exercise / Stats</strong> let you check a day’s body records, log meals, start workouts, and review diet and workout calendars and trends.
+
+### How can I log meals quickly?
+
+Use the input bar at the bottom of Diet: type a sentence, or tap the voice button to start and tap again to finish. Recognized food is logged directly; tap Undo while the confirmation is visible if anything is wrong. The camera button opens the camera directly. The food library lets you search, favorite or create foods, and choose an existing photo from your library. AI portions and nutrition are estimates; check and adjust them to match what you ate.
 
 ### What's built into the diet / fitness modules?
 
-The diet module ships with <strong>45</strong> common foods (covering staples, meat & dairy, seafood, vegetables, fruit and legumes) — each with nutrition values and an icon, ready to log in one tap; you can also create custom foods. The fitness module ships with <strong>83</strong> standard exercises (chest 11 / back 12 / shoulder 10 / arms 14 / legs 15 / core 10 / cardio 12) across four tracking types (weight+reps / reps / duration / distance). You can build your own training plans from these exercises.
+Diet includes <strong>40+</strong> common foods, portion logging, favorites and custom foods. Training includes <strong>110+</strong> exercises to build plans from. Sets are prefilled with your last results, and recent plans are ready to repeat. Choose one schedule type per plan: weekdays, days of the month, or specific calendar dates. Select a preset rest time from 30–240 seconds in Settings → Health, and adjust it by 15 seconds at a time during a workout.
 
 ### Where do the health / diet ring data come from?
 
