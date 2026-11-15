@@ -1,22 +1,22 @@
 ---
 title: "AI Food Recognition by Photo + Custom Food"
-description: "Snap a photo of your meal and AI recognizes the name, portion, calories and macros — review and save it as a custom food."
+description: "Take a photo directly from Diet’s bottom camera button or choose an existing photo through the food library. Check AI estimates or create a reusable custom food."
 group: "health"
 order: 11
 ---
 
-Can't find what you ate in the food library? Just <strong>snap a photo</strong> and let AI handle it. It recognizes the food's <strong>name, portion, and calories</strong>, and even estimates <strong>protein / carbs / fat</strong> for you. Double-check, save, and it becomes a <strong>custom food</strong> you can log anytime.
+Can’t find what you ate in the food library? <strong>Take a photo directly</strong> from the bottom of Diet, or choose an existing photo through the food library. AI estimates the <strong>name, portion, calories and protein / carbs / fat</strong>. Check the results and log the meal; you can also create a reusable <strong>custom food</strong> in the library.
 
 <video src="/vitae/videos/health-diet-ai-demo.mp4" controls playsinline preload="metadata" poster="/vitae/images/screenshots/tutorials/health-diet-ai-poster.png"></video>
 
-## How to Use
+## Current Entry Points
 
-1. <strong>Open Create a Custom Food</strong>. Path: <strong>Health → Diet</strong>, tap "+" on a meal to open <strong>"Add Food"</strong>, switch to the <strong>"Custom"</strong> tab, and tap <strong>"Create a Custom Food"</strong>.
-2. <strong>Snap or pick a photo</strong>. On the "AI Food Recognition" page, choose <strong>"Snap a Photo"</strong> to take one now, or <strong>"Choose from Photo Library"</strong> to pick an existing food photo.
-3. <strong>Wait for AI recognition</strong>. "AI recognizing…" appears, and shortly it fills in the <strong>food name, unit, quantity, and calories</strong> (required), plus <strong>protein, carbs, and fat</strong> (optional).
-4. <strong>Review and edit</strong>. AI results are for reference only — <strong>tap any field to change it</strong>. Adjust portion, calories, and nutrients to match reality.
-5. <strong>Save</strong>. Tap <strong>"Save"</strong> in the top right, and this food enters your "Custom" food library.
-6. <strong>Log this meal</strong>. Back in the food list, select it under <strong>"Custom"</strong>, enter the <strong>portion</strong> you ate this time, and tap "Confirm / Log" to add it to today's diet.
+1. <strong>Take a photo directly</strong>: go to <strong>Health → Diet</strong> and tap the camera button in the bottom input bar.
+2. <strong>Choose an existing photo</strong>: open the <strong>food library</strong> from the bottom bar, then use its photo entry to choose from your photo library.
+3. <strong>Review the result</strong>: AI estimates the name, portion, calories and macros. Adjust them to match what you ate, then log to the appropriate meal.
+4. <strong>Create a reusable food</strong>: use <strong>Custom</strong> in the food library to create a food, check its name, unit and nutrition, and save. You can also fill everything in manually without AI.
+
+You can also type or speak a sentence in the bottom bar to log directly, then Undo while the confirmation is visible if needed. The original video shows the previous custom-food flow; follow the current entry points above.
 
 ## What Information AI Recognizes
 
@@ -40,4 +40,4 @@ Under the <strong>"Custom"</strong> tab in "Add Food", listed alongside the othe
 
 ### How do I log it into a specific meal?
 
-In "Add Food" for that meal, select it, enter the portion, and confirm. For the full diet logging flow, see [Diet Logging & Calories](/en/vitae/guide/health-diet/).
+Open the food library from the bottom bar, select it, enter the portion, choose the meal, and confirm. For the full diet logging flow, see [Diet Logging & Calories](/en/vitae/guide/health-diet/).

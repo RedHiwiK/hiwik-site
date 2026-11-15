@@ -3,6 +3,17 @@ title: "What's New"
 description: "What's new in every Vitae release."
 ---
 
+## v2.0.0 *November 15, 2026*
+
+### What's New & Improved
+
+- <strong>A fresh new Vitae</strong>: a new companion, app icon and colorful illustrations. Switch back to Classic in Settings → General → App Icon.
+- <strong>Now and Reviews</strong>: see how this week differs from usual in Now, look back on a week or month in Reviews, and manually request an AI letter for another perspective. The former Coach is no longer available.
+- <strong>Log meals in a sentence</strong>: type or speak from the bottom bar to identify foods, estimate nutrition and log directly, with Undo if needed. You can also take a photo directly or open the food library.
+- <strong>Pick up where you left off</strong>: sets are prefilled with your last results and recent plans are ready to repeat. Schedule training by weekday, day of the month, or specific date.
+- <strong>Four Health tabs</strong>: Body, Diet, Exercise and Stats have distinct roles. Stats brings diet and workout calendars and trends together.
+- <strong>Make it your own</strong>: use your photos for Finance and Belongings card backgrounds, with new shopping platform icons for transaction categories.
+
 ## v1.5.2 *November 3, 2026*
 
 ### What's New

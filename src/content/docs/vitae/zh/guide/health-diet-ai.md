@@ -1,22 +1,22 @@
 ---
 title: "AI 拍照识别食物 + 自定义食物"
-description: "拍一张食物照片，AI 识别出名称、份量、卡路里和营养素，核对后存成自定义食物。"
+description: "从饮食底部相机直接拍照，或从食物库选相册图片；核对 AI 估算，也可创建自定义食物。"
 group: "health"
 order: 11
 ---
 
-食物库里搜不到你吃的东西？<strong>拍一张照片</strong>交给 AI 就行。它会识别出食物的<strong>名称、份量、卡路里</strong>，连<strong>蛋白质 / 碳水 / 脂肪</strong>都帮你估好，核对一下保存，就成了一条<strong>自定义食物</strong>，以后随时能记。
+食物库里搜不到你吃的东西？从饮食页底部<strong>直接拍照</strong>，或打开食物库选择已有照片，AI 会估算食物的<strong>名称、份量、卡路里和蛋白质 / 碳水 / 脂肪</strong>。核对后记入餐次；需要重复使用的食物，也可在食物库中建成<strong>自定义食物</strong>。
 
 <video src="/vitae/videos/health-diet-ai-demo.mp4" controls playsinline preload="metadata" poster="/vitae/images/screenshots/tutorials/health-diet-ai-poster.png"></video>
 
-## 怎么用
+## 当前入口
 
-1. <strong>进入新建自定义食物</strong>。路径：<strong>健康 → 饮食</strong>，在某一餐点「+」打开<strong>「添加食物」</strong>，切到<strong>「自定义」</strong>标签，点<strong>「新建自定义食物」</strong>。
-2. <strong>拍照或选图</strong>。在「拍照识别食物」页，选择<strong>「拍照」</strong>现拍一张，或<strong>「从相册选择」</strong>一张已有的食物照片。
-3. <strong>等 AI 识别</strong>。出现「AI 识别中…」，稍候它会填好<strong>食物名称、单位、数量、卡路里</strong>（必填），以及<strong>蛋白质、碳水、脂肪</strong>（选填）。
-4. <strong>核对并修改</strong>。AI 识别结果仅供参考，<strong>点任意一项都能改</strong>——份量、热量、营养素按实际调整。
-5. <strong>保存</strong>。点右上角<strong>「保存」</strong>，这条食物就进了「自定义」食物库。
-6. <strong>记录这一餐</strong>。回到食物列表，在<strong>「自定义」</strong>里选中它，填上这次吃的<strong>份量</strong>，点「确认 / 记录」就加进当天饮食了。
+1. <strong>直接拍照</strong>：进入<strong>健康 → 饮食</strong>，点底部输入栏的相机按钮，直接拍摄食物。
+2. <strong>选择已有照片</strong>：打开底部<strong>食物库</strong>，从其中的拍照入口选择相册图片。
+3. <strong>核对结果</strong>：AI 估算名称、份量、卡路里和三大营养素；根据实际吃的内容修改，再记录到对应餐次。
+4. <strong>建立常用食物</strong>：需要反复使用时，可在食物库的<strong>自定义</strong>中创建食物，核对名称、单位和营养后保存；不使用 AI 也能手动填写。
+
+底部也支持输入或说一句话直接记餐，记错后可在提示出现时撤销。旧演示视频展示的是从自定义食物进入的流程，当前入口以本页文字为准。
 
 ## AI 会识别出哪些信息
 
@@ -40,4 +40,4 @@ order: 11
 
 ### 怎么把它记进某一餐？
 
-在对应餐次的「添加食物」里选中它、填份量、确认即可。完整的饮食记录流程见 [饮食记录与卡路里](/vitae/guide/health-diet/)。
+从底部食物库选中它、填份量、选择餐次并确认即可。完整的饮食记录流程见 [饮食记录与卡路里](/vitae/guide/health-diet/)。

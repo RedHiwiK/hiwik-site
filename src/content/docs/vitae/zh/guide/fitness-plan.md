@@ -9,34 +9,35 @@ order: 7
 
 <video src="/vitae/videos/fitness-plan-demo.mp4" controls playsinline preload="metadata" poster="/vitae/images/screenshots/tutorials/fitness-plan-poster.png"></video>
 
+原演示视频展示旧版训练界面；当前请以以下计划入口、组表格和可调休息说明为准。
+
 ## 第一步：编排一套训练计划
 
-1. <strong>新建计划</strong>。进入<strong>健康 → 锻炼</strong>，新建一套训练计划。
-2. <strong>起名字、写重点</strong>。给计划起个名字（比如「周一计划」），再写一句这套训练的重点（比如「胸肩三头 / 周一推训练」），方便以后认。
-3. <strong>添加动作</strong>。点右上角的<strong>「+」</strong>从动作库挑动作加进来（比如杠铃平板卧推）。顶部会实时显示<strong>添加动作数、总组数、预计时长</strong>。
-4. <strong>设置组数 / 次数 / 重量</strong>。点开动作，分别设定<strong>组数</strong>（3 / 4 / 5 / 6 组）、<strong>次数</strong>（8 / 10 / 12 / 15 次）和<strong>重量</strong>（10 / 20 / 30 / 40kg）——可以点预设，也可以用「−／＋」微调，定好点<strong>「确认」</strong>。
-5. <strong>保存计划</strong>。都排好后点右上角的<strong>绿色对勾</strong>保存。没添加动作的草稿在退出时会自动丢弃。
+1. <strong>管理计划</strong>：进入<strong>健康 → 锻炼</strong>，从计划卡片标题右侧进入计划管理，新建或编辑计划。
+2. <strong>名字和动作</strong>：为计划命名，添加动作，并设置各动作的目标组数、次数、重量等。
+3. <strong>训练日</strong>：在计划编辑页选择<strong>每周几 / 每月几号 / 日历指定日期</strong>中的一种，不使用轮换排程。
+4. <strong>保存</strong>：确认后保存计划。今天排了训练日的计划会优先出现在<strong>「今天的计划」</strong>；没有时，锻炼页突出最近计划的<strong>「再练一次」</strong>，其他计划与自由训练也在同一张卡片里。
 
 ## 第二步：开始训练、按组记录
 
-1. <strong>开始动作</strong>。进入某个动作，点<strong>「开始动作」</strong>，顶部会显示「已完成 0/4」这样的进度。
-2. <strong>记录每一组</strong>。每做完一组，填入这一组实际的<strong>重量和次数</strong>，点<strong>「完成本组」</strong>。想沿用上一组的数据，点<strong>「沿用上一组」</strong>一键带入。
-3. <strong>自动休息提醒</strong>。完成一组后会<strong>自动开始 2 分钟休息倒计时</strong>（目前固定 2 分钟），结束时发通知提醒你练下一组。不想被提醒可在设置里关掉，见下方常见问题。
-4. <strong>增减组数</strong>。临时想多练或少练，可以加组，或<strong>长按某一组</strong>把它删除。
+1. <strong>开始训练</strong>：选择今天的计划、最近计划再练，或自由训练。
+2. <strong>表格逐组录入</strong>：每组自动预填上次成绩；根据本次实际情况修改重量、次数、时长或距离，再标记完成。预填不是自动确认。
+3. <strong>组间休息</strong>：完成一组后自动开始倒计时，训练中可点<strong>−15 秒 / +15 秒</strong>临时调整；最后一组完成后不再进入休息。
+4. <strong>增减组数</strong>：可按实际训练需要增加或删除组。
 
 ## 常见问题
 
 ### 休息提醒的时长能改吗？不想被提醒怎么办？
 
-休息时长目前<strong>固定为 2 分钟</strong>，暂时还不能自定义，调整时长会在后续版本上线。如果不想被提醒，到 <strong>设置 → 健康</strong> 把<strong>「休息结束提醒」</strong>开关关掉即可。
+可以。在<strong>设置 → 健康</strong>选择<strong>30–240 秒</strong>的预设默认休息时长，未设置时默认为 120 秒；训练中还可每次加减 15 秒。无需休息结束通知时，关闭同页的<strong>「休息结束提醒」</strong>即可。
 
 ### 这套计划下次还能直接用吗？
 
-能。保存后的计划会留在「锻炼」里，下次直接点开<strong>「开始动作」</strong>就能练，不用重新编排。
+能。保存后的计划会留在「锻炼」里，最近练过的计划可点<strong>「再练一次」</strong>，不用重新编排。
 
 ### 某一组记错了能改吗？
 
-能。点开对应的组重新填重量和次数即可；多记的组<strong>长按删除</strong>。这些只改这次训练的记录。
+能。在组表格中修改对应组的实际成绩，多记的组可删除。这些只改这次训练的记录。
 
 ### 动作库里没有我想练的动作？
 

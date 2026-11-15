@@ -1,6 +1,6 @@
 ---
 title: "饮食记录与卡路里"
-description: "按早午晚加餐记录吃了什么，搜食物填份量算卡路里，对照碳水蛋白脂肪目标看缺口。"
+description: "从底部输入一句话、语音或直接拍照，也可打开食物库；按餐次记录，核对营养目标，记错可撤销。"
 group: "health"
 order: 10
 ---
@@ -9,18 +9,20 @@ order: 10
 
 <video src="/vitae/videos/health-diet-demo.mp4" controls playsinline preload="metadata" poster="/vitae/images/screenshots/tutorials/health-diet-poster.png"></video>
 
-## 记一餐
+## 从底部输入栏记一餐
 
-1. <strong>选餐次</strong>。在「饮食」页找到<strong>早餐 / 午餐 / 晚餐 / 加餐</strong>，点对应那一栏的<strong>「+」</strong>。
-2. <strong>找食物</strong>。直接<strong>搜索</strong>食物名（比如「牛奶」「面包」），或在<strong>常用 / 收藏 / 自定义</strong>之间切换，也能按<strong>主食杂粮 / 肉蛋奶 / 海鲜水产 / 蔬菜</strong>等分类找。
-3. <strong>填份量</strong>。点中食物后输入<strong>克数或毫升数</strong>，热量和碳水 / 蛋白质 / 脂肪会按份量自动换算；常吃的可以点<strong>「收藏」</strong>，下次更好找。
-4. <strong>确认记录</strong>。可以一次多选几样，底部会显示<strong>「已选 N 项 · XXX 千卡」</strong>，点<strong>「记录」</strong>就加进这一餐了。
+- <strong>文字</strong>：输入「午饭一碗牛肉面」这样的描述并发送，AI 识别食物、估算营养后直接记入餐次。
+- <strong>语音</strong>：点语音按钮开始，再点一次结束；转成文字后按同样流程记入。
+- <strong>相机</strong>：点相机按钮直接拍照识别；已有照片从<strong>食物库</strong>中的拍照入口选择。
+- <strong>食物库</strong>：打开食物库，按<strong>全部 / 收藏 / 自定义</strong>搜索或选择食物，填份量、选餐次后记录；常用食物按记录频率排列。
+
+文字和语音记入后会出现<strong>「撤销」</strong>提示，发现不对可立即撤回。本页原演示视频展示旧入口，当前请以底部输入栏为准。
 
 ## 看营养、设目标
 
 - <strong>摄入热量</strong>：页面顶部显示当天已摄入的总热量和目标（比如「目标 3,000」）。
-- <strong>营养摄入环</strong>：下方的环展示<strong>碳水 / 蛋白质 / 脂肪</strong>各自的占比和克数，配合进度条对照目标。
-- <strong>目标设置</strong>：点营养摄入卡右上角的<strong>「目标设置」</strong>，可以设定每日热量和三大营养素的目标值。
+- <strong>营养进度</strong>：热量卡内分别显示<strong>碳水 / 蛋白质 / 脂肪</strong>的已摄入克数、目标与同色进度条。
+- <strong>目标设置</strong>：点击顶部<strong>热量卡片</strong>，即可设置每日热量和三大营养素目标。
 
 ## 常见问题
 
@@ -30,8 +32,8 @@ order: 10
 
 ### 记错了餐次或份量怎么办？
 
-在对应餐次里点开那条记录，可以改份量或删除；删掉后当天的热量和营养会跟着重新计算。
+文字 / 语音记入后可在提示出现时点「撤销」；已有记录可点开修改，也可左滑删除。修改或删除后，当天热量和营养会自动重新计算。
 
 ### 常吃的几样每次都要重新搜？
 
-不用。填份量时点<strong>「收藏」</strong>，之后在<strong>「收藏」</strong>标签里一眼就能找到；最近记过的也会进<strong>「常用」</strong>。
+不用。填份量时点<strong>「收藏」</strong>，之后在<strong>「收藏」</strong>标签里一眼就能找到；常用食物会在<strong>「全部」</strong>中按记录频率排列。
