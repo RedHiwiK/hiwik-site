@@ -3,7 +3,7 @@ title: "What's New"
 description: "What's new in every Vitae release."
 ---
 
-## v2.0.0 *Unreleased*
+## v2.0.0 *November 15, 2026*
 
 ### What's New & Improved
 
