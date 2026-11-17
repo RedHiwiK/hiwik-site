@@ -18,18 +18,18 @@ const app: AppConfig = {
   features: [
     {
       icon: 'scan-line',
-      title: { zh: '截图导入一张票', en: 'Import from a screenshot' },
+      title: { zh: '截图导入票据', en: 'Import ticket screenshots' },
       body: {
-        zh: '选一张订票截图，自动识别车次、航班、起终点、日期和座位，校对一下就好。去程、返程会合成同一段旅程。',
-        en: 'Pick a booking screenshot and Waystub reads the train or flight number, stations, date and seat; you just check it. Outbound and return tickets become one journey.',
+        zh: '选一张订票截图，或批量整理多张历史票据，识别后核对并保存。多段旅程可以合并、拆分，导入的原始票据也能随时查看。',
+        en: 'Pick a booking screenshot or import several tickets at once, then review and save. Merge or split journeys and view your saved original tickets whenever you need them.',
       },
     },
     {
       icon: 'file-text',
       title: { zh: '发票、登机牌、短信都能导', en: 'Invoices, boarding passes, texts' },
       body: {
-        zh: '支持 12306 电子发票、航空行程单（PDF / OFD）、钱包里的登机牌、短信和邮件文字；没有截图也能手动添加。',
-        en: 'Also reads e-invoices and itineraries (PDF / OFD), Wallet boarding passes, and ticket texts or emails. No screenshot? Add a trip by hand.',
+        zh: '支持电子发票、航空行程单（PDF / OFD）、钱包登机牌、短信和邮件文字，也能从飞行记录表导入多次飞行；没有票据也能手动添加。',
+        en: 'Also reads e-invoices and itineraries (PDF / OFD), Wallet boarding passes, texts and emails. Import a flight record spreadsheet to organize past flights, or add a trip by hand.',
       },
     },
     {

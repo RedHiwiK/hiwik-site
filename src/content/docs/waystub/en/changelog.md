@@ -3,6 +3,18 @@ title: "What's New"
 description: "What's new in every Waystub release."
 ---
 
+## v1.0.3 *November 17, 2026*
+
+More ways to bring your journeys together
+
+- Import ticket screenshots in batches, review them, and save separate journeys.
+- Import a flight record spreadsheet to organize past flights.
+- Merge or split journeys and customize the departure and destination shown on your ticket.
+- View saved original tickets right from a journey.
+- Browse all years in your collection, with Footprints opening your latest year of travel.
+- Swipe across photos to select or deselect several at once.
+- Enjoy smoother browsing with larger photo collections, plus improvements to importing, maps, and screen layouts.
+
 ## v1.0.2 *November 13, 2026*
 
 ### New Features
